@@ -1,13 +1,16 @@
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'splash_screen_model.dart';
 export 'splash_screen_model.dart';
 
 class SplashScreenWidget extends StatefulWidget {
-  const SplashScreenWidget({super.key});
+  const SplashScreenWidget({Key? key}) : super(key: key);
 
   @override
   _SplashScreenWidgetState createState() => _SplashScreenWidgetState();
@@ -57,12 +60,12 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget> {
         key: scaffoldKey,
         backgroundColor: colorFromCssString(
           '#1D2428',
-          defaultColor: const Color(0xFF1D2428),
+          defaultColor: Color(0xFF1D2428),
         ),
         body: SafeArea(
           top: true,
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(44.0, 0.0, 44.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(44.0, 0.0, 44.0, 0.0),
             child: InkWell(
               splashColor: Colors.transparent,
               focusColor: Colors.transparent,

@@ -5,15 +5,17 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'login_verify_code_model.dart';
 export 'login_verify_code_model.dart';
 
 class LoginVerifyCodeWidget extends StatefulWidget {
-  const LoginVerifyCodeWidget({super.key});
+  const LoginVerifyCodeWidget({Key? key}) : super(key: key);
 
   @override
   _LoginVerifyCodeWidgetState createState() => _LoginVerifyCodeWidgetState();
@@ -45,8 +47,8 @@ class _LoginVerifyCodeWidgetState extends State<LoginVerifyCodeWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 400.ms,
-          begin: const Offset(0.0, 10.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(0.0, 10.0),
+          end: Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -57,8 +59,8 @@ class _LoginVerifyCodeWidgetState extends State<LoginVerifyCodeWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 400.ms,
-          begin: const Offset(0.0, 10.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(0.0, 10.0),
+          end: Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -102,7 +104,7 @@ class _LoginVerifyCodeWidgetState extends State<LoginVerifyCodeWidget>
           child: Stack(
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 12.0),
+                padding: EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 12.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -112,12 +114,12 @@ class _LoginVerifyCodeWidgetState extends State<LoginVerifyCodeWidget>
                       child: Stack(
                         children: [
                           Align(
-                            alignment: const AlignmentDirectional(0.00, 1.00),
+                            alignment: AlignmentDirectional(0.00, 1.00),
                             child: ClipRRect(
                               child: Container(
                                 width: double.infinity,
                                 height: double.infinity,
-                                decoration: const BoxDecoration(
+                                decoration: BoxDecoration(
                                   gradient: LinearGradient(
                                     colors: [
                                       Color(0x61000000),
@@ -129,19 +131,19 @@ class _LoginVerifyCodeWidgetState extends State<LoginVerifyCodeWidget>
                                     end: AlignmentDirectional(0, 1.0),
                                   ),
                                 ),
-                                alignment: const AlignmentDirectional(0.00, 1.00),
+                                alignment: AlignmentDirectional(0.00, 1.00),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Align(
                                       alignment:
-                                          const AlignmentDirectional(-1.00, 0.00),
+                                          AlignmentDirectional(-1.00, 0.00),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             32.0, 56.0, 0.0, 26.0),
                                         child: FlutterFlowIconButton(
-                                          borderColor: const Color(0x00CEF138),
+                                          borderColor: Color(0x00CEF138),
                                           borderRadius: 20.0,
                                           borderWidth: 1.0,
                                           buttonSize: 40.0,
@@ -162,9 +164,9 @@ class _LoginVerifyCodeWidgetState extends State<LoginVerifyCodeWidget>
                                     ),
                                     Align(
                                       alignment:
-                                          const AlignmentDirectional(-1.00, 0.00),
+                                          AlignmentDirectional(-1.00, 0.00),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             20.0, 0.0, 0.0, 0.0),
                                         child: Text(
                                           'VERIFICATION',
@@ -182,9 +184,9 @@ class _LoginVerifyCodeWidgetState extends State<LoginVerifyCodeWidget>
                                     ),
                                     Align(
                                       alignment:
-                                          const AlignmentDirectional(-1.00, 0.00),
+                                          AlignmentDirectional(-1.00, 0.00),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             20.0, 16.0, 0.0, 80.0),
                                         child: Text(
                                           'Check your email. We’ve sent you the PIN at your email.',
@@ -202,7 +204,7 @@ class _LoginVerifyCodeWidgetState extends State<LoginVerifyCodeWidget>
                                     ),
                                     Expanded(
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 0.0, 16.0, 32.0),
                                         child: Form(
                                           key: _model.formKey,
@@ -213,7 +215,7 @@ class _LoginVerifyCodeWidgetState extends State<LoginVerifyCodeWidget>
                                             children: [
                                               Container(
                                                 width: double.infinity,
-                                                decoration: const BoxDecoration(
+                                                decoration: BoxDecoration(
                                                   color: Color(0x0014181B),
                                                 ),
                                               ),
@@ -290,7 +292,7 @@ class _LoginVerifyCodeWidgetState extends State<LoginVerifyCodeWidget>
                                               ),
                                               Expanded(
                                                 child: Container(
-                                                  decoration: const BoxDecoration(
+                                                  decoration: BoxDecoration(
                                                     color: Color(0x0014181B),
                                                   ),
                                                 ),
@@ -313,16 +315,16 @@ class _LoginVerifyCodeWidgetState extends State<LoginVerifyCodeWidget>
                                               ),
                                               Expanded(
                                                 child: Container(
-                                                  decoration: const BoxDecoration(
+                                                  decoration: BoxDecoration(
                                                     color: Color(0x0014181B),
                                                   ),
                                                 ),
                                               ),
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.00, 0.00),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 20.0, 0.0, 32.0),
                                                   child: Text(
@@ -343,10 +345,10 @@ class _LoginVerifyCodeWidgetState extends State<LoginVerifyCodeWidget>
                                                 ),
                                               ),
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     1.00, 0.00),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           16.0, 0.0, 16.0, 0.0),
                                                   child: FFButtonWidget(
@@ -368,14 +370,14 @@ class _LoginVerifyCodeWidgetState extends State<LoginVerifyCodeWidget>
                                                       width: double.infinity,
                                                       height: 40.0,
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   24.0,
                                                                   13.0,
                                                                   24.0,
                                                                   13.0),
                                                       iconPadding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,
@@ -398,7 +400,7 @@ class _LoginVerifyCodeWidgetState extends State<LoginVerifyCodeWidget>
                                                                 fontSize: 17.0,
                                                               ),
                                                       elevation: 3.0,
-                                                      borderSide: const BorderSide(
+                                                      borderSide: BorderSide(
                                                         color:
                                                             Colors.transparent,
                                                         width: 1.0,

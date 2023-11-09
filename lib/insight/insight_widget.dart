@@ -1,16 +1,18 @@
 import '/flutter_flow/flutter_flow_calendar.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'dart:async';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:provider/provider.dart';
 import 'insight_model.dart';
 export 'insight_model.dart';
 
 class InsightWidget extends StatefulWidget {
-  const InsightWidget({super.key});
+  const InsightWidget({Key? key}) : super(key: key);
 
   @override
   _InsightWidgetState createState() => _InsightWidgetState();
@@ -69,31 +71,11 @@ class _InsightWidgetState extends State<InsightWidget> {
                 onChange: (DateTimeRange? newSelectedDate) async {
                   _model.calendarSelectedDay = newSelectedDate;
                   setState(() {
-                    _model.cal = 0;
-                    _model.steps = 0;
-                    _model.time = 0;
-                    _model.heartRate = 0;
+                    _model.cal = random_data.randomInteger(0, 2000);
+                    _model.steps = random_data.randomInteger(0, 1000);
+                    _model.time = random_data.randomInteger(0, 360);
+                    _model.heartRate = random_data.randomInteger(0, 150);
                   });
-                  unawaited(
-                    () async {
-                      await showDialog(
-                        context: context,
-                        builder: (alertDialogContext) {
-                          return AlertDialog(
-                            title: const Text('Siu'),
-                            content: const Text('Siu'),
-                            actions: [
-                              TextButton(
-                                onPressed: () =>
-                                    Navigator.pop(alertDialogContext),
-                                child: const Text('Ok'),
-                              ),
-                            ],
-                          );
-                        },
-                      );
-                    }(),
-                  );
                   setState(() {});
                 },
                 titleStyle: FlutterFlowTheme.of(context).headlineSmall,
@@ -103,18 +85,18 @@ class _InsightWidgetState extends State<InsightWidget> {
                 inactiveDateStyle: FlutterFlowTheme.of(context).labelMedium,
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).primaryBackground,
                   ),
                   child: Align(
-                    alignment: const AlignmentDirectional(0.00, 0.00),
+                    alignment: AlignmentDirectional(0.00, 0.00),
                     child: Stack(
                       children: [
                         Align(
-                          alignment: const AlignmentDirectional(0.00, 0.00),
+                          alignment: AlignmentDirectional(0.00, 0.00),
                           child: CircularPercentIndicator(
                             percent: valueOrDefault<double>(
                               _model.cal! / 2000,
@@ -130,14 +112,14 @@ class _InsightWidgetState extends State<InsightWidget> {
                           ),
                         ),
                         Align(
-                          alignment: const AlignmentDirectional(0.00, 0.00),
+                          alignment: AlignmentDirectional(0.00, 0.00),
                           child: Container(
                             width: 168.0,
                             height: 168.0,
-                            decoration: const BoxDecoration(
+                            decoration: BoxDecoration(
                               color: Color(0x001D2428),
                             ),
-                            alignment: const AlignmentDirectional(0.00, 0.00),
+                            alignment: AlignmentDirectional(0.00, 0.00),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -161,9 +143,9 @@ class _InsightWidgetState extends State<InsightWidget> {
                                     ),
                                     Align(
                                       alignment:
-                                          const AlignmentDirectional(0.00, 0.00),
+                                          AlignmentDirectional(0.00, 0.00),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             7.0, 8.0, 0.0, 0.0),
                                         child: Text(
                                           'Cal',
@@ -180,9 +162,9 @@ class _InsightWidgetState extends State<InsightWidget> {
                                   ],
                                 ),
                                 Align(
-                                  alignment: const AlignmentDirectional(0.00, 0.00),
+                                  alignment: AlignmentDirectional(0.00, 0.00),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         7.0, 0.0, 0.0, 0.0),
                                     child: Text(
                                       'Active Calories',
@@ -206,7 +188,7 @@ class _InsightWidgetState extends State<InsightWidget> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(24.0, 30.0, 24.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(24.0, 30.0, 24.0, 0.0),
                 child: Container(
                   width: double.infinity,
                   height: 110.0,
@@ -222,11 +204,11 @@ class _InsightWidgetState extends State<InsightWidget> {
                           color: FlutterFlowTheme.of(context).primaryBackground,
                         ),
                         child: Align(
-                          alignment: const AlignmentDirectional(0.00, 0.00),
+                          alignment: AlignmentDirectional(0.00, 0.00),
                           child: Stack(
                             children: [
                               Align(
-                                alignment: const AlignmentDirectional(0.00, 0.00),
+                                alignment: AlignmentDirectional(0.00, 0.00),
                                 child: CircularPercentIndicator(
                                   percent: valueOrDefault<double>(
                                     _model.steps! / 10000,
@@ -243,16 +225,16 @@ class _InsightWidgetState extends State<InsightWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.00, 0.00),
+                                alignment: AlignmentDirectional(0.00, 0.00),
                                 child: Container(
                                   width: 110.0,
                                   height: 110.0,
-                                  decoration: const BoxDecoration(
+                                  decoration: BoxDecoration(
                                     color: Color(0x001D2428),
                                   ),
-                                  alignment: const AlignmentDirectional(0.00, 0.00),
+                                  alignment: AlignmentDirectional(0.00, 0.00),
                                   child: Align(
-                                    alignment: const AlignmentDirectional(0.00, 0.00),
+                                    alignment: AlignmentDirectional(0.00, 0.00),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
@@ -260,10 +242,10 @@ class _InsightWidgetState extends State<InsightWidget> {
                                       children: [
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(0.00, 0.00),
+                                              AlignmentDirectional(0.00, 0.00),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 10.0),
                                             child: Text(
                                               'Steps',
@@ -315,11 +297,11 @@ class _InsightWidgetState extends State<InsightWidget> {
                           color: FlutterFlowTheme.of(context).primaryBackground,
                         ),
                         child: Align(
-                          alignment: const AlignmentDirectional(0.00, 0.00),
+                          alignment: AlignmentDirectional(0.00, 0.00),
                           child: Stack(
                             children: [
                               Align(
-                                alignment: const AlignmentDirectional(0.00, 0.00),
+                                alignment: AlignmentDirectional(0.00, 0.00),
                                 child: CircularPercentIndicator(
                                   percent: valueOrDefault<double>(
                                     _model.time! / 360,
@@ -336,24 +318,24 @@ class _InsightWidgetState extends State<InsightWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.00, 0.00),
+                                alignment: AlignmentDirectional(0.00, 0.00),
                                 child: Container(
                                   width: 110.0,
                                   height: 110.0,
-                                  decoration: const BoxDecoration(
+                                  decoration: BoxDecoration(
                                     color: Color(0x001D2428),
                                   ),
-                                  alignment: const AlignmentDirectional(0.00, 0.00),
+                                  alignment: AlignmentDirectional(0.00, 0.00),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Align(
                                         alignment:
-                                            const AlignmentDirectional(0.00, 0.00),
+                                            AlignmentDirectional(0.00, 0.00),
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 8.0),
                                           child: Text(
                                             'Time',
@@ -387,7 +369,7 @@ class _InsightWidgetState extends State<InsightWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     5.0, 8.0, 0.0, 0.0),
                                             child: Text(
                                               'min',
@@ -417,11 +399,11 @@ class _InsightWidgetState extends State<InsightWidget> {
                           color: FlutterFlowTheme.of(context).primaryBackground,
                         ),
                         child: Align(
-                          alignment: const AlignmentDirectional(0.00, 0.00),
+                          alignment: AlignmentDirectional(0.00, 0.00),
                           child: Stack(
                             children: [
                               Align(
-                                alignment: const AlignmentDirectional(0.00, 0.00),
+                                alignment: AlignmentDirectional(0.00, 0.00),
                                 child: CircularPercentIndicator(
                                   percent: valueOrDefault<double>(
                                     _model.heartRate! / 150,
@@ -438,16 +420,16 @@ class _InsightWidgetState extends State<InsightWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.00, 0.00),
+                                alignment: AlignmentDirectional(0.00, 0.00),
                                 child: Container(
                                   width: 110.0,
                                   height: 110.0,
-                                  decoration: const BoxDecoration(
+                                  decoration: BoxDecoration(
                                     color: Color(0x001D2428),
                                   ),
-                                  alignment: const AlignmentDirectional(0.00, 0.00),
+                                  alignment: AlignmentDirectional(0.00, 0.00),
                                   child: Align(
-                                    alignment: const AlignmentDirectional(0.00, 0.00),
+                                    alignment: AlignmentDirectional(0.00, 0.00),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
@@ -455,10 +437,10 @@ class _InsightWidgetState extends State<InsightWidget> {
                                       children: [
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(0.00, 0.00),
+                                              AlignmentDirectional(0.00, 0.00),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 8.0),
                                             child: Text(
                                               'Heart',
@@ -495,7 +477,7 @@ class _InsightWidgetState extends State<InsightWidget> {
                                                       ),
                                             ),
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(5.0, 8.0, 0.0, 0.0),
                                               child: Text(
                                                 'bpm',

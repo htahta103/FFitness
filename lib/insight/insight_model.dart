@@ -1,7 +1,14 @@
 import '/flutter_flow/flutter_flow_calendar.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/random_data_util.dart' as random_data;
 import 'insight_widget.dart' show InsightWidget;
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:percent_indicator/percent_indicator.dart';
+import 'package:provider/provider.dart';
 
 class InsightModel extends FlutterFlowModel<InsightWidget> {
   ///  Local state fields for this page.
@@ -22,7 +29,6 @@ class InsightModel extends FlutterFlowModel<InsightWidget> {
 
   /// Initialization and disposal methods.
 
-  @override
   void initState(BuildContext context) {
     calendarSelectedDay = DateTimeRange(
       start: DateTime.now().startOfDay,
@@ -30,7 +36,6 @@ class InsightModel extends FlutterFlowModel<InsightWidget> {
     );
   }
 
-  @override
   void dispose() {
     unfocusNode.dispose();
   }

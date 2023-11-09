@@ -6,12 +6,13 @@ import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'onboarding_weight_model.dart';
 export 'onboarding_weight_model.dart';
 
 class OnboardingWeightWidget extends StatefulWidget {
-  const OnboardingWeightWidget({super.key});
+  const OnboardingWeightWidget({Key? key}) : super(key: key);
 
   @override
   _OnboardingWeightWidgetState createState() => _OnboardingWeightWidgetState();
@@ -65,17 +66,17 @@ class _OnboardingWeightWidgetState extends State<OnboardingWeightWidget> {
         body: SafeArea(
           top: true,
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Align(
-                  alignment: const AlignmentDirectional(0.00, 0.00),
+                  alignment: AlignmentDirectional(0.00, 0.00),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 80.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 80.0, 0.0, 0.0),
                     child: Text(
                       'WHAT’S YOUR WEIGHT?',
                       textAlign: TextAlign.center,
@@ -87,10 +88,10 @@ class _OnboardingWeightWidgetState extends State<OnboardingWeightWidget> {
                   ),
                 ),
                 Align(
-                  alignment: const AlignmentDirectional(0.00, 0.00),
+                  alignment: AlignmentDirectional(0.00, 0.00),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                     child: Text(
                       'YOU CAN ALWAYS CHANGE THIS LATER  ',
                       textAlign: TextAlign.center,
@@ -120,12 +121,12 @@ class _OnboardingWeightWidgetState extends State<OnboardingWeightWidget> {
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             Align(
-                              alignment: const AlignmentDirectional(0.00, 0.00),
+                              alignment: AlignmentDirectional(0.00, 0.00),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 16.0, 0.0, 0.0),
                                 child: Text(
-                                  FFAppState().selectedWeight.toString(),
+                                  '${FFAppState().selectedWeight.toString()}',
                                   textAlign: TextAlign.center,
                                   style: FlutterFlowTheme.of(context)
                                       .titleLarge
@@ -137,9 +138,9 @@ class _OnboardingWeightWidgetState extends State<OnboardingWeightWidget> {
                               ),
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(0.00, 0.00),
+                              alignment: AlignmentDirectional(0.00, 0.00),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 16.0, 0.0, 12.0),
                                 child: Text(
                                   'kg',
@@ -156,7 +157,7 @@ class _OnboardingWeightWidgetState extends State<OnboardingWeightWidget> {
                           ],
                         ),
                         Flexible(
-                          child: SizedBox(
+                          child: Container(
                             width: double.infinity,
                             height: 100.0,
                             child: custom_widgets.WeightPickerWidget(
@@ -184,9 +185,9 @@ class _OnboardingWeightWidgetState extends State<OnboardingWeightWidget> {
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 0.0, 16.0),
+                          EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 0.0, 16.0),
                       child: FlutterFlowIconButton(
-                        borderColor: const Color(0x00B8D323),
+                        borderColor: Color(0x00B8D323),
                         borderRadius: 25.0,
                         borderWidth: 0.0,
                         buttonSize: 54.0,
@@ -203,13 +204,13 @@ class _OnboardingWeightWidgetState extends State<OnboardingWeightWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
                       child: FFButtonWidget(
                         onPressed: () async {
                           context.pushNamed(
                             'onboardingHeight',
                             extra: <String, dynamic>{
-                              kTransitionInfoKey: const TransitionInfo(
+                              kTransitionInfoKey: TransitionInfo(
                                 hasTransition: true,
                                 transitionType: PageTransitionType.rightToLeft,
                               ),
@@ -220,9 +221,9 @@ class _OnboardingWeightWidgetState extends State<OnboardingWeightWidget> {
                         options: FFButtonOptions(
                           width: 110.0,
                           height: 50.0,
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               24.0, 13.0, 24.0, 13.0),
-                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).primary,
                           textStyle:
@@ -232,7 +233,7 @@ class _OnboardingWeightWidgetState extends State<OnboardingWeightWidget> {
                                         .primaryBackground,
                                   ),
                           elevation: 3.0,
-                          borderSide: const BorderSide(
+                          borderSide: BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),

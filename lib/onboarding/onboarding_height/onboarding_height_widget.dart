@@ -5,12 +5,13 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'onboarding_height_model.dart';
 export 'onboarding_height_model.dart';
 
 class OnboardingHeightWidget extends StatefulWidget {
-  const OnboardingHeightWidget({super.key});
+  const OnboardingHeightWidget({Key? key}) : super(key: key);
 
   @override
   _OnboardingHeightWidgetState createState() => _OnboardingHeightWidgetState();
@@ -57,17 +58,17 @@ class _OnboardingHeightWidgetState extends State<OnboardingHeightWidget> {
         body: SafeArea(
           top: true,
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Align(
-                  alignment: const AlignmentDirectional(0.00, 0.00),
+                  alignment: AlignmentDirectional(0.00, 0.00),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 80.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 80.0, 0.0, 0.0),
                     child: Text(
                       'WHAT’S YOUR HEIGHT?',
                       textAlign: TextAlign.center,
@@ -79,10 +80,10 @@ class _OnboardingHeightWidgetState extends State<OnboardingHeightWidget> {
                   ),
                 ),
                 Align(
-                  alignment: const AlignmentDirectional(0.00, 0.00),
+                  alignment: AlignmentDirectional(0.00, 0.00),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                     child: Text(
                       'THIS HELPS US CREATE YOUR PERSONALIZED PLAN',
                       textAlign: TextAlign.center,
@@ -94,9 +95,9 @@ class _OnboardingHeightWidgetState extends State<OnboardingHeightWidget> {
                     ),
                   ),
                 ),
-                const Expanded(
+                Expanded(
                   flex: 1,
-                  child: SizedBox(
+                  child: Container(
                     width: double.infinity,
                     height: double.infinity,
                     child: custom_widgets.IntergerPickerWidget(
@@ -116,9 +117,9 @@ class _OnboardingHeightWidgetState extends State<OnboardingHeightWidget> {
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 0.0, 16.0),
+                          EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 0.0, 16.0),
                       child: FlutterFlowIconButton(
-                        borderColor: const Color(0x00B8D323),
+                        borderColor: Color(0x00B8D323),
                         borderRadius: 25.0,
                         borderWidth: 0.0,
                         buttonSize: 54.0,
@@ -135,13 +136,13 @@ class _OnboardingHeightWidgetState extends State<OnboardingHeightWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
                       child: FFButtonWidget(
                         onPressed: () async {
                           context.pushNamed(
                             'onboardingGoal',
                             extra: <String, dynamic>{
-                              kTransitionInfoKey: const TransitionInfo(
+                              kTransitionInfoKey: TransitionInfo(
                                 hasTransition: true,
                                 transitionType: PageTransitionType.rightToLeft,
                               ),
@@ -152,9 +153,9 @@ class _OnboardingHeightWidgetState extends State<OnboardingHeightWidget> {
                         options: FFButtonOptions(
                           width: 110.0,
                           height: 50.0,
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               24.0, 13.0, 24.0, 13.0),
-                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).primary,
                           textStyle:
@@ -164,7 +165,7 @@ class _OnboardingHeightWidgetState extends State<OnboardingHeightWidget> {
                                         .primaryBackground,
                                   ),
                           elevation: 3.0,
-                          borderSide: const BorderSide(
+                          borderSide: BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),

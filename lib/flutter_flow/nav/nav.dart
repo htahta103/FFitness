@@ -1,12 +1,17 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
 import '/index.dart';
 import '/main.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/lat_lng.dart';
+import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'serialization_util.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -44,7 +49,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 ),
               ),
             )
-          : const InsightWidget(),
+          : ReelsPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
@@ -62,99 +67,98 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                     ),
                   ),
                 )
-              : const InsightWidget(),
+              : ReelsPageWidget(),
         ),
         FFRoute(
           name: 'SplashScreen',
           path: '/splashScreen',
-          builder: (context, params) => const SplashScreenWidget(),
+          builder: (context, params) => SplashScreenWidget(),
         ),
         FFRoute(
           name: 'onboardingPage',
           path: '/onboardingPage',
-          builder: (context, params) => const OnboardingPageWidget(),
+          builder: (context, params) => OnboardingPageWidget(),
         ),
         FFRoute(
           name: 'onboardingGender',
           path: '/onboardingGender',
-          builder: (context, params) => const OnboardingGenderWidget(),
+          builder: (context, params) => OnboardingGenderWidget(),
         ),
         FFRoute(
           name: 'onboardingAge',
           path: '/onboardingAge',
-          builder: (context, params) => const OnboardingAgeWidget(),
+          builder: (context, params) => OnboardingAgeWidget(),
         ),
         FFRoute(
           name: 'onboardingWeight',
           path: '/onboardingWeight',
-          builder: (context, params) => const OnboardingWeightWidget(),
+          builder: (context, params) => OnboardingWeightWidget(),
         ),
         FFRoute(
           name: 'onboardingHeight',
           path: '/onboardingHeight',
-          builder: (context, params) => const OnboardingHeightWidget(),
+          builder: (context, params) => OnboardingHeightWidget(),
         ),
         FFRoute(
           name: 'onboardingGoal',
           path: '/onboardingGoal',
-          builder: (context, params) => const OnboardingGoalWidget(),
+          builder: (context, params) => OnboardingGoalWidget(),
         ),
         FFRoute(
           name: 'onboardingActivity',
           path: '/onboardingActivity',
-          builder: (context, params) => const OnboardingActivityWidget(),
+          builder: (context, params) => OnboardingActivityWidget(),
         ),
         FFRoute(
           name: 'loginDefault',
           path: '/loginDefault',
-          builder: (context, params) => const LoginDefaultWidget(),
+          builder: (context, params) => LoginDefaultWidget(),
         ),
         FFRoute(
           name: 'Signup',
           path: '/signup',
-          builder: (context, params) => const SignupWidget(),
+          builder: (context, params) => SignupWidget(),
         ),
         FFRoute(
           name: 'loginForgot',
           path: '/loginForgot',
-          builder: (context, params) => const LoginForgotWidget(),
+          builder: (context, params) => LoginForgotWidget(),
         ),
         FFRoute(
           name: 'loginVerifyCode',
           path: '/loginVerifyCode',
-          builder: (context, params) => const LoginVerifyCodeWidget(),
+          builder: (context, params) => LoginVerifyCodeWidget(),
         ),
         FFRoute(
           name: 'ReelsPage',
           path: '/reelsPage',
-          builder: (context, params) => const ReelsPageWidget(),
+          builder: (context, params) => ReelsPageWidget(),
         ),
         FFRoute(
           name: 'HomePage',
           path: '/homePage',
           builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'HomePage')
-              : const HomePageWidget(),
+              ? NavBarPage(initialPage: 'HomePage')
+              : HomePageWidget(),
         ),
         FFRoute(
           name: 'HomePageCopy',
           path: '/homePageCopy',
           builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'HomePageCopy')
-              : const HomePageCopyWidget(),
+              ? NavBarPage(initialPage: 'HomePageCopy')
+              : HomePageCopyWidget(),
         ),
         FFRoute(
           name: 'TrainingDetail',
           path: '/trainingDetail',
-          builder: (context, params) => const TrainingDetailWidget(),
+          builder: (context, params) => TrainingDetailWidget(),
         ),
         FFRoute(
           name: 'Insight',
           path: '/insight',
-          builder: (context, params) => const InsightWidget(),
+          builder: (context, params) => InsightWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
-      observers: [routeObserver],
     );
 
 extension NavParamExtensions on Map<String, String?> {
@@ -308,7 +312,7 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 
 class FFAppState extends ChangeNotifier {
@@ -23,38 +24,38 @@ class FFAppState extends ChangeNotifier {
 
   String _selectedGender = 'male';
   String get selectedGender => _selectedGender;
-  set selectedGender(String value) {
-    _selectedGender = value;
+  set selectedGender(String _value) {
+    _selectedGender = _value;
   }
 
   int _selectedHeight = 150;
   int get selectedHeight => _selectedHeight;
-  set selectedHeight(int value) {
-    _selectedHeight = value;
+  set selectedHeight(int _value) {
+    _selectedHeight = _value;
   }
 
   int _selectedWeight = 60;
   int get selectedWeight => _selectedWeight;
-  set selectedWeight(int value) {
-    _selectedWeight = value;
+  set selectedWeight(int _value) {
+    _selectedWeight = _value;
   }
 
   int _selectedAge = 25;
   int get selectedAge => _selectedAge;
-  set selectedAge(int value) {
-    _selectedAge = value;
+  set selectedAge(int _value) {
+    _selectedAge = _value;
   }
 
   String _goal = 'Get fitter';
   String get goal => _goal;
-  set goal(String value) {
-    _goal = value;
+  set goal(String _value) {
+    _goal = _value;
   }
 
   String _activityLevel = 'Intermediate';
   String get activityLevel => _activityLevel;
-  set activityLevel(String value) {
-    _activityLevel = value;
+  set activityLevel(String _value) {
+    _activityLevel = _value;
   }
 
   List<String> _goals = [
@@ -65,31 +66,31 @@ class FFAppState extends ChangeNotifier {
     'Learn the basic'
   ];
   List<String> get goals => _goals;
-  set goals(List<String> value) {
-    _goals = value;
+  set goals(List<String> _value) {
+    _goals = _value;
   }
 
-  void addToGoals(String value) {
-    _goals.add(value);
+  void addToGoals(String _value) {
+    _goals.add(_value);
   }
 
-  void removeFromGoals(String value) {
-    _goals.remove(value);
+  void removeFromGoals(String _value) {
+    _goals.remove(_value);
   }
 
-  void removeAtIndexFromGoals(int index) {
-    _goals.removeAt(index);
+  void removeAtIndexFromGoals(int _index) {
+    _goals.removeAt(_index);
   }
 
   void updateGoalsAtIndex(
-    int index,
+    int _index,
     String Function(String) updateFn,
   ) {
-    _goals[index] = updateFn(_goals[index]);
+    _goals[_index] = updateFn(_goals[_index]);
   }
 
-  void insertAtIndexInGoals(int index, String value) {
-    _goals.insert(index, value);
+  void insertAtIndexInGoals(int _index, String _value) {
+    _goals.insert(_index, _value);
   }
 
   List<String> _activities = [
@@ -100,31 +101,31 @@ class FFAppState extends ChangeNotifier {
     'True Beast'
   ];
   List<String> get activities => _activities;
-  set activities(List<String> value) {
-    _activities = value;
+  set activities(List<String> _value) {
+    _activities = _value;
   }
 
-  void addToActivities(String value) {
-    _activities.add(value);
+  void addToActivities(String _value) {
+    _activities.add(_value);
   }
 
-  void removeFromActivities(String value) {
-    _activities.remove(value);
+  void removeFromActivities(String _value) {
+    _activities.remove(_value);
   }
 
-  void removeAtIndexFromActivities(int index) {
-    _activities.removeAt(index);
+  void removeAtIndexFromActivities(int _index) {
+    _activities.removeAt(_index);
   }
 
   void updateActivitiesAtIndex(
-    int index,
+    int _index,
     String Function(String) updateFn,
   ) {
-    _activities[index] = updateFn(_activities[index]);
+    _activities[_index] = updateFn(_activities[_index]);
   }
 
-  void insertAtIndexInActivities(int index, String value) {
-    _activities.insert(index, value);
+  void insertAtIndexInActivities(int _index, String _value) {
+    _activities.insert(_index, _value);
   }
 }
 

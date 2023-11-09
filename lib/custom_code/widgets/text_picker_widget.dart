@@ -6,7 +6,8 @@ import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-import 'package:awesome_number_picker/awesome_number_picker.dart';
+import 'index.dart'; // Imports other custom widgets
+
 import 'dart:math';
 
 class TextPickerWidget extends StatefulWidget {
@@ -52,11 +53,13 @@ class _TextPickerWidgetState extends State<TextPickerWidget> {
           FFAppState().activityLevel = i;
         }
       }),
-      otherItemsTextStyle: TextStyle(fontSize: 24),
+      otherItemsTextStyle: TextStyle(
+          fontSize: 24, color: FlutterFlowTheme.of(context).primaryText),
       otherItemsDecoration: BoxDecoration(
           border: Border.all(width: 0, color: Colors.transparent)),
       pickedItemDecoration: BoxDecoration(border: Border()),
-      pickedItemTextStyle: TextStyle(fontSize: 28),
+      pickedItemTextStyle: TextStyle(
+          fontSize: 28, color: FlutterFlowTheme.of(context).primaryText),
     );
   }
 }
@@ -139,7 +142,7 @@ class _TextPickerState extends State<TextPicker> {
     final pickedItemTextStyle = Theme.of(context)
         .textTheme
         .titleMedium!
-        .copyWith(color: Theme.of(context).primaryColor);
+        .copyWith(color: FlutterFlowTheme.of(context).primaryText);
     final otherItemsTextStyle = Theme.of(context)
         .textTheme
         .titleSmall!

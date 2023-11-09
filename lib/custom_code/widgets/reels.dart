@@ -6,8 +6,12 @@ import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
+import 'index.dart'; // Imports other custom widgets
+
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:video_player/video_player.dart';
+import 'package:preload_page_view/preload_page_view.dart';
+import 'package:rxdart/rxdart.dart';
 
 class Reels extends StatefulWidget {
   const Reels({
@@ -48,13 +52,14 @@ class VideoReelPage extends StatefulWidget {
 }
 
 class _VideoReelPageState extends State<VideoReelPage> {
-  late PageController _pageController;
+  late PreloadPageController _pageController;
   int currentPage = 0;
-
+  late BehaviorSubject<int> _currentPageController;
   @override
   void initState() {
     super.initState();
-    _pageController = PageController(initialPage: widget.index);
+    _pageController = PreloadPageController(initialPage: widget.index);
+    _currentPageController = BehaviorSubject<int>();
   }
 
   @override
@@ -67,19 +72,21 @@ class _VideoReelPageState extends State<VideoReelPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: PageView.builder(
+      body: PreloadPageView.builder(
         scrollDirection: Axis.vertical,
         controller: _pageController,
         itemCount: widget.reels.length,
+        preloadPagesCount: 5,
         onPageChanged: (index) {
           currentPage = index;
-          widget.onPageChange?.call(index);
+          _currentPageController.sink.add(index);
         },
         itemBuilder: (context, index) {
           return VideoPlayerWidget(
-            key: Key(widget.reels[index]),
-            reelUrl: widget.reels[index],
-          );
+              key: Key(widget.reels[index]),
+              reelUrl: widget.reels[index],
+              pageIndex: _currentPageController,
+              index: index);
         },
       ),
     );
@@ -88,10 +95,14 @@ class _VideoReelPageState extends State<VideoReelPage> {
 
 class VideoPlayerWidget extends StatefulWidget {
   final String reelUrl;
+  final int index;
+  final BehaviorSubject<int> pageIndex;
 
   const VideoPlayerWidget({
     super.key,
     required this.reelUrl,
+    required this.pageIndex,
+    required this.index,
   });
 
   @override
@@ -119,17 +130,24 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget>
     }
     if (mounted) {
       _controller = VideoPlayerController.file(fileInfo!.file)
-        ..initialize().then((_) {
-          setState(() {
-            _controller?.setLooping(true); // Set video to loop
-            _controller?.play();
-            _videoInitialized = true;
+        ..initialize().then((value) {
+          _controller?.play();
+          _controller?.pause();
+
+          widget.pageIndex.listen((currentIndex) {
+            print(currentIndex);
+            if (widget.index == currentIndex) {
+              setState(() {
+                _controller?.play();
+                _videoInitialized = true;
+              });
+            }
           });
         });
     }
   }
 
-  bool _isPlaying = false;
+  bool _isPlaying = true;
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {

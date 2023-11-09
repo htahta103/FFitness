@@ -6,7 +6,8 @@ import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-import 'package:awesome_number_picker/awesome_number_picker.dart';
+import 'index.dart'; // Imports other custom widgets
+
 import 'dart:math';
 
 class IntergerPickerWidget extends StatefulWidget {
@@ -48,7 +49,8 @@ class _IntergerPickerWidgetState extends State<IntergerPickerWidget> {
         if ((widget.mode ?? 'age') == 'age') FFAppState().selectedAge = i;
         if ((widget.mode ?? 'age') == 'height') FFAppState().selectedHeight = i;
       }),
-      otherItemsTextStyle: TextStyle(fontSize: 43),
+      otherItemsTextStyle: TextStyle(
+          fontSize: 43, color: FlutterFlowTheme.of(context).primaryText),
       otherItemsDecoration: BoxDecoration(
           border: Border.all(width: 0, color: Colors.transparent)),
       pickedItemDecoration: BoxDecoration(
@@ -56,7 +58,8 @@ class _IntergerPickerWidgetState extends State<IntergerPickerWidget> {
         top: BorderSide(color: Color(0xffd0fd3e), width: 3),
         bottom: BorderSide(color: Color(0xffd0fd3e), width: 3),
       )),
-      pickedItemTextStyle: TextStyle(fontSize: 58),
+      pickedItemTextStyle: TextStyle(
+          fontSize: 58, color: FlutterFlowTheme.of(context).primaryText),
     );
   }
 }
@@ -145,7 +148,7 @@ class _IntegerNumberPickerState extends State<IntegerNumberPicker> {
     final pickedItemTextStyle = Theme.of(context)
         .textTheme
         .titleMedium!
-        .copyWith(color: Theme.of(context).primaryColor);
+        .copyWith(color: FlutterFlowTheme.of(context).primaryText);
     final otherItemsTextStyle = Theme.of(context)
         .textTheme
         .titleSmall!
@@ -178,7 +181,7 @@ class _IntegerNumberPickerState extends State<IntegerNumberPicker> {
                         : pi / 2,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Center(
                           child: Text((i + widget.minValue).toString(),
@@ -188,10 +191,12 @@ class _IntegerNumberPickerState extends State<IntegerNumberPicker> {
                         ),
                         widget.extraText != null
                             ? Container(
-                                padding: EdgeInsets.only(bottom: 10),
+                                padding: EdgeInsets.only(bottom: 15),
                                 child: Text((widget.extraText).toString(),
                                     textAlign: TextAlign.center,
-                                    style: TextStyle(fontSize: 17)),
+                                    style: (widget.pickedItemTextStyle ??
+                                            pickedItemTextStyle)
+                                        .merge(TextStyle(fontSize: 17))),
                               )
                             : const SizedBox.shrink(),
                       ],

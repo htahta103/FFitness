@@ -7,12 +7,14 @@ import 'package:sticky_headers/sticky_headers.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'home_page_copy_model.dart';
 export 'home_page_copy_model.dart';
 
 class HomePageCopyWidget extends StatefulWidget {
-  const HomePageCopyWidget({super.key});
+  const HomePageCopyWidget({Key? key}) : super(key: key);
 
   @override
   _HomePageCopyWidgetState createState() => _HomePageCopyWidgetState();
@@ -69,9 +71,9 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Align(
-                        alignment: const AlignmentDirectional(-1.00, 0.00),
+                        alignment: AlignmentDirectional(-1.00, 0.00),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 80.0, 0.0, 0.0),
                           child: Text(
                             'Hello FlutterFlow,',
@@ -95,11 +97,11 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                             color:
                                 FlutterFlowTheme.of(context).primaryBackground,
                           ),
-                          alignment: const AlignmentDirectional(-1.00, 0.00),
+                          alignment: AlignmentDirectional(-1.00, 0.00),
                           child: Align(
-                            alignment: const AlignmentDirectional(-1.00, 0.00),
+                            alignment: AlignmentDirectional(-1.00, 0.00),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 4.0, 0.0, 0.0),
                               child: Text(
                                 'Good morning.',
@@ -119,11 +121,11 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 32.0, 16.0, 0.0),
                               child: Container(
                                 width: double.infinity,
-                                decoration: const BoxDecoration(
+                                decoration: BoxDecoration(
                                   color: Color(0x0014181B),
                                 ),
                                 child: Column(
@@ -138,10 +140,10 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                       children: [
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(-1.00, 0.00),
+                                              AlignmentDirectional(-1.00, 0.00),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 4.0, 0.0, 0.0),
                                             child: Text(
                                               'Today Workout Plan',
@@ -160,10 +162,10 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                         ),
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(-1.00, 1.00),
+                                              AlignmentDirectional(-1.00, 1.00),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 4.0, 0.0, 0.0),
                                             child: Text(
                                               'Mon 26 Apr',
@@ -187,7 +189,7 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                       children: [
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 14.0, 0.0, 0.0),
                                           child: Container(
                                             width: double.infinity,
@@ -208,7 +210,7 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .alternate,
-                                                  offset: const Offset(0.0, 2.0),
+                                                  offset: Offset(0.0, 2.0),
                                                 )
                                               ],
                                               borderRadius:
@@ -219,22 +221,22 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                         ),
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(-1.00, 1.00),
+                                              AlignmentDirectional(-1.00, 1.00),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 14.0, 0.0, 0.0),
                                             child: Container(
                                               width: double.infinity,
                                               height: 160.0,
                                               decoration: BoxDecoration(
-                                                color: const Color(0x61000000),
+                                                color: Color(0x61000000),
                                                 borderRadius:
                                                     BorderRadius.circular(16.0),
                                                 shape: BoxShape.rectangle,
                                               ),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         16.0, 16.0, 16.0, 16.0),
                                                 child: Column(
@@ -245,7 +247,7 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                                   children: [
                                                     Align(
                                                       alignment:
-                                                          const AlignmentDirectional(
+                                                          AlignmentDirectional(
                                                               -1.00, 1.00),
                                                       child: Text(
                                                         'Day 01 - Warm Up',
@@ -261,11 +263,11 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                                     ),
                                                     Align(
                                                       alignment:
-                                                          const AlignmentDirectional(
+                                                          AlignmentDirectional(
                                                               -1.00, 1.00),
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     4.0,
@@ -300,11 +302,11 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 32.0, 0.0, 0.0),
                               child: Container(
                                 width: double.infinity,
-                                decoration: const BoxDecoration(
+                                decoration: BoxDecoration(
                                   color: Color(0x0014181B),
                                 ),
                                 child: Column(
@@ -313,7 +315,7 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                       CrossAxisAlignment.stretch,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           16.0, 0.0, 16.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -321,10 +323,10 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Align(
-                                            alignment: const AlignmentDirectional(
+                                            alignment: AlignmentDirectional(
                                                 -1.00, 0.00),
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 4.0, 0.0, 0.0),
                                               child: Text(
                                                 'Workout Categories',
@@ -342,10 +344,10 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                             ),
                                           ),
                                           Align(
-                                            alignment: const AlignmentDirectional(
+                                            alignment: AlignmentDirectional(
                                                 -1.00, 1.00),
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 4.0, 0.0, 0.0),
                                               child: Text(
                                                 'See All',
@@ -367,7 +369,7 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                     ),
                                     Container(
                                       width: double.infinity,
-                                      decoration: const BoxDecoration(
+                                      decoration: BoxDecoration(
                                         color: Color(0x0014181B),
                                       ),
                                       child: Column(
@@ -375,7 +377,7 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                         children: [
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 12.0, 16.0, 0.0),
                                             child: Container(
                                               width: double.infinity,
@@ -422,7 +424,7 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                                                       .of(
                                                                           context)
                                                                   .primary
-                                                              : const Color(
+                                                              : Color(
                                                                   0x00FFFFFF),
                                                           borderRadius:
                                                               BorderRadius
@@ -431,7 +433,7 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                                         ),
                                                         child: Align(
                                                           alignment:
-                                                              const AlignmentDirectional(
+                                                              AlignmentDirectional(
                                                                   0.00, 0.00),
                                                           child: Text(
                                                             'Beginner',
@@ -490,7 +492,7 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                                                       .of(
                                                                           context)
                                                                   .primary
-                                                              : const Color(
+                                                              : Color(
                                                                   0x00FFFFFF),
                                                           borderRadius:
                                                               BorderRadius
@@ -499,7 +501,7 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                                         ),
                                                         child: Align(
                                                           alignment:
-                                                              const AlignmentDirectional(
+                                                              AlignmentDirectional(
                                                                   0.00, 0.00),
                                                           child: Text(
                                                             'Intermediate',
@@ -558,7 +560,7 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                                                       .of(
                                                                           context)
                                                                   .primary
-                                                              : const Color(
+                                                              : Color(
                                                                   0x00FFFFFF),
                                                           borderRadius:
                                                               BorderRadius
@@ -567,7 +569,7 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                                         ),
                                                         child: Align(
                                                           alignment:
-                                                              const AlignmentDirectional(
+                                                              AlignmentDirectional(
                                                                   0.00, 0.00),
                                                           child: Text(
                                                             'Advance',
@@ -599,7 +601,7 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                             ),
                                           ),
                                           Align(
-                                            alignment: const AlignmentDirectional(
+                                            alignment: AlignmentDirectional(
                                                 -1.00, 0.00),
                                             child: Builder(
                                               builder: (context) {
@@ -616,7 +618,7 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                                         .toList()
                                                         .take(10)
                                                         .toList();
-                                                return SizedBox(
+                                                return Container(
                                                   width: double.infinity,
                                                   height: 180.0,
                                                   child: CarouselSlider.builder(
@@ -625,14 +627,14 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                                         (context, siuIndex, _) {
                                                       final siuItem =
                                                           siu[siuIndex];
-                                                      return SizedBox(
+                                                      return Container(
                                                         width: double.infinity,
                                                         height: 160.0,
                                                         child: Stack(
                                                           children: [
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           14.0,
@@ -667,12 +669,12 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                                             ),
                                                             Align(
                                                               alignment:
-                                                                  const AlignmentDirectional(
+                                                                  AlignmentDirectional(
                                                                       -1.00,
                                                                       1.00),
                                                               child: Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             14.0,
@@ -685,7 +687,7 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                                                   height: 160.0,
                                                                   decoration:
                                                                       BoxDecoration(
-                                                                    color: const Color(
+                                                                    color: Color(
                                                                         0x61000000),
                                                                     borderRadius:
                                                                         BorderRadius.circular(
@@ -695,7 +697,7 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                                                   ),
                                                                   child:
                                                                       Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             16.0,
                                                                             16.0,
@@ -711,7 +713,7 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                                                               .end,
                                                                       children: [
                                                                         Align(
-                                                                          alignment: const AlignmentDirectional(
+                                                                          alignment: AlignmentDirectional(
                                                                               -1.00,
                                                                               1.00),
                                                                           child:
@@ -724,12 +726,12 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                                                           ),
                                                                         ),
                                                                         Align(
-                                                                          alignment: const AlignmentDirectional(
+                                                                          alignment: AlignmentDirectional(
                                                                               -1.00,
                                                                               1.00),
                                                                           child:
                                                                               Padding(
-                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
                                                                                 0.0,
                                                                                 4.0,
                                                                                 0.0,
@@ -788,11 +790,11 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 32.0, 0.0, 0.0),
                               child: Container(
                                 width: double.infinity,
-                                decoration: const BoxDecoration(
+                                decoration: BoxDecoration(
                                   color: Color(0x0014181B),
                                 ),
                                 child: Column(
@@ -801,7 +803,7 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                       CrossAxisAlignment.stretch,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           16.0, 0.0, 16.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -809,10 +811,10 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Align(
-                                            alignment: const AlignmentDirectional(
+                                            alignment: AlignmentDirectional(
                                                 -1.00, 0.00),
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 4.0, 0.0, 0.0),
                                               child: Text(
                                                 'Workout Categories',
@@ -830,10 +832,10 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                             ),
                                           ),
                                           Align(
-                                            alignment: const AlignmentDirectional(
+                                            alignment: AlignmentDirectional(
                                                 -1.00, 1.00),
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 4.0, 0.0, 0.0),
                                               child: Text(
                                                 'See All',
@@ -855,7 +857,7 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                     ),
                                     Container(
                                       width: double.infinity,
-                                      decoration: const BoxDecoration(
+                                      decoration: BoxDecoration(
                                         color: Color(0x0014181B),
                                       ),
                                       child: Column(
@@ -863,7 +865,7 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                         children: [
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 12.0, 16.0, 0.0),
                                             child: Container(
                                               width: double.infinity,
@@ -910,7 +912,7 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                                                       .of(
                                                                           context)
                                                                   .primary
-                                                              : const Color(
+                                                              : Color(
                                                                   0x00FFFFFF),
                                                           borderRadius:
                                                               BorderRadius
@@ -919,7 +921,7 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                                         ),
                                                         child: Align(
                                                           alignment:
-                                                              const AlignmentDirectional(
+                                                              AlignmentDirectional(
                                                                   0.00, 0.00),
                                                           child: Text(
                                                             'Beginner',
@@ -978,7 +980,7 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                                                       .of(
                                                                           context)
                                                                   .primary
-                                                              : const Color(
+                                                              : Color(
                                                                   0x00FFFFFF),
                                                           borderRadius:
                                                               BorderRadius
@@ -987,7 +989,7 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                                         ),
                                                         child: Align(
                                                           alignment:
-                                                              const AlignmentDirectional(
+                                                              AlignmentDirectional(
                                                                   0.00, 0.00),
                                                           child: Text(
                                                             'Intermediate',
@@ -1046,7 +1048,7 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                                                       .of(
                                                                           context)
                                                                   .primary
-                                                              : const Color(
+                                                              : Color(
                                                                   0x00FFFFFF),
                                                           borderRadius:
                                                               BorderRadius
@@ -1055,7 +1057,7 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                                         ),
                                                         child: Align(
                                                           alignment:
-                                                              const AlignmentDirectional(
+                                                              AlignmentDirectional(
                                                                   0.00, 0.00),
                                                           child: Text(
                                                             'Advance',
@@ -1087,7 +1089,7 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                             ),
                                           ),
                                           Align(
-                                            alignment: const AlignmentDirectional(
+                                            alignment: AlignmentDirectional(
                                                 -1.00, 0.00),
                                             child: Builder(
                                               builder: (context) {
@@ -1104,7 +1106,7 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                                         .toList()
                                                         .take(10)
                                                         .toList();
-                                                return SizedBox(
+                                                return Container(
                                                   width: double.infinity,
                                                   height: 180.0,
                                                   child: CarouselSlider.builder(
@@ -1113,14 +1115,14 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                                         (context, siuIndex, _) {
                                                       final siuItem =
                                                           siu[siuIndex];
-                                                      return SizedBox(
+                                                      return Container(
                                                         width: double.infinity,
                                                         height: 160.0,
                                                         child: Stack(
                                                           children: [
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           14.0,
@@ -1155,12 +1157,12 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                                             ),
                                                             Align(
                                                               alignment:
-                                                                  const AlignmentDirectional(
+                                                                  AlignmentDirectional(
                                                                       -1.00,
                                                                       1.00),
                                                               child: Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             14.0,
@@ -1173,7 +1175,7 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                                                   height: 160.0,
                                                                   decoration:
                                                                       BoxDecoration(
-                                                                    color: const Color(
+                                                                    color: Color(
                                                                         0x61000000),
                                                                     borderRadius:
                                                                         BorderRadius.circular(
@@ -1183,7 +1185,7 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                                                   ),
                                                                   child:
                                                                       Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             16.0,
                                                                             16.0,
@@ -1199,7 +1201,7 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                                                               .end,
                                                                       children: [
                                                                         Align(
-                                                                          alignment: const AlignmentDirectional(
+                                                                          alignment: AlignmentDirectional(
                                                                               -1.00,
                                                                               1.00),
                                                                           child:
@@ -1212,12 +1214,12 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                                                           ),
                                                                         ),
                                                                         Align(
-                                                                          alignment: const AlignmentDirectional(
+                                                                          alignment: AlignmentDirectional(
                                                                               -1.00,
                                                                               1.00),
                                                                           child:
                                                                               Padding(
-                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
                                                                                 0.0,
                                                                                 4.0,
                                                                                 0.0,
@@ -1283,16 +1285,16 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                 ),
               ),
               Align(
-                alignment: const AlignmentDirectional(0.00, 1.00),
+                alignment: AlignmentDirectional(0.00, 1.00),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 0.0, 16.0),
+                          EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 0.0, 16.0),
                       child: FlutterFlowIconButton(
-                        borderColor: const Color(0x00B8D323),
+                        borderColor: Color(0x00B8D323),
                         borderRadius: 25.0,
                         borderWidth: 0.0,
                         buttonSize: 54.0,
@@ -1309,7 +1311,7 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
                       child: FFButtonWidget(
                         onPressed: () {
                           print('Button pressed ...');
@@ -1318,9 +1320,9 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                         options: FFButtonOptions(
                           width: 110.0,
                           height: 50.0,
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               24.0, 13.0, 24.0, 13.0),
-                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).primary,
                           textStyle:
@@ -1330,7 +1332,7 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget> {
                                         .primaryBackground,
                                   ),
                           elevation: 3.0,
-                          borderSide: const BorderSide(
+                          borderSide: BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),

@@ -3,14 +3,16 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'onboarding_gender_model.dart';
 export 'onboarding_gender_model.dart';
 
 class OnboardingGenderWidget extends StatefulWidget {
-  const OnboardingGenderWidget({super.key});
+  const OnboardingGenderWidget({Key? key}) : super(key: key);
 
   @override
   _OnboardingGenderWidgetState createState() => _OnboardingGenderWidgetState();
@@ -31,8 +33,8 @@ class _OnboardingGenderWidgetState extends State<OnboardingGenderWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 400.ms,
-          begin: const Offset(0.0, -10.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(0.0, -10.0),
+          end: Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -43,8 +45,8 @@ class _OnboardingGenderWidgetState extends State<OnboardingGenderWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 400.ms,
-          begin: const Offset(0.0, -10.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(0.0, -10.0),
+          end: Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -56,8 +58,8 @@ class _OnboardingGenderWidgetState extends State<OnboardingGenderWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 400.ms,
-          begin: const Offset(0.0, -20.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(0.0, -20.0),
+          end: Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -69,15 +71,15 @@ class _OnboardingGenderWidgetState extends State<OnboardingGenderWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 400.ms,
-          begin: const Offset(1.0, 1.0),
-          end: const Offset(0.95, 0.95),
+          begin: Offset(1.0, 1.0),
+          end: Offset(0.95, 0.95),
         ),
         ScaleEffect(
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 400.ms,
-          begin: const Offset(1.0, 1.0),
-          end: const Offset(1.0, 1.0),
+          begin: Offset(1.0, 1.0),
+          end: Offset(1.0, 1.0),
         ),
       ],
     ),
@@ -89,8 +91,8 @@ class _OnboardingGenderWidgetState extends State<OnboardingGenderWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 400.ms,
-          begin: const Offset(0.0, 20.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(0.0, 20.0),
+          end: Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -102,15 +104,15 @@ class _OnboardingGenderWidgetState extends State<OnboardingGenderWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 400.ms,
-          begin: const Offset(1.0, 1.0),
-          end: const Offset(0.95, 0.95),
+          begin: Offset(1.0, 1.0),
+          end: Offset(0.95, 0.95),
         ),
         ScaleEffect(
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 400.ms,
-          begin: const Offset(1.0, 1.0),
-          end: const Offset(1.0, 1.0),
+          begin: Offset(1.0, 1.0),
+          end: Offset(1.0, 1.0),
         ),
       ],
     ),
@@ -159,17 +161,17 @@ class _OnboardingGenderWidgetState extends State<OnboardingGenderWidget>
         body: SafeArea(
           top: true,
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Align(
-                  alignment: const AlignmentDirectional(0.00, 0.00),
+                  alignment: AlignmentDirectional(0.00, 0.00),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 80.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 80.0, 0.0, 0.0),
                     child: Text(
                       'TELL US ABOUT YOURSELF!',
                       textAlign: TextAlign.center,
@@ -182,10 +184,10 @@ class _OnboardingGenderWidgetState extends State<OnboardingGenderWidget>
                   ),
                 ),
                 Align(
-                  alignment: const AlignmentDirectional(0.00, 0.00),
+                  alignment: AlignmentDirectional(0.00, 0.00),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                     child: Text(
                       'TO GIVE YOU A BETTER EXPERIENCE WE NEED\nTO KNOW YOUR GENDER',
                       textAlign: TextAlign.center,
@@ -202,14 +204,14 @@ class _OnboardingGenderWidgetState extends State<OnboardingGenderWidget>
                   flex: 1,
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 44.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -360,13 +362,13 @@ class _OnboardingGenderWidgetState extends State<OnboardingGenderWidget>
                 ),
                 Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 16.0, 16.0),
+                      EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 16.0, 16.0),
                   child: FFButtonWidget(
                     onPressed: () async {
                       context.pushNamed(
                         'onboardingAge',
                         extra: <String, dynamic>{
-                          kTransitionInfoKey: const TransitionInfo(
+                          kTransitionInfoKey: TransitionInfo(
                             hasTransition: true,
                             transitionType: PageTransitionType.rightToLeft,
                           ),
@@ -377,10 +379,10 @@ class _OnboardingGenderWidgetState extends State<OnboardingGenderWidget>
                     options: FFButtonOptions(
                       width: 110.0,
                       height: 50.0,
-                      padding: const EdgeInsetsDirectional.fromSTEB(
+                      padding: EdgeInsetsDirectional.fromSTEB(
                           24.0, 13.0, 24.0, 13.0),
                       iconPadding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: FlutterFlowTheme.of(context).primary,
                       textStyle:
                           FlutterFlowTheme.of(context).titleSmall.override(
@@ -388,7 +390,7 @@ class _OnboardingGenderWidgetState extends State<OnboardingGenderWidget>
                                 color: Colors.black,
                               ),
                       elevation: 3.0,
-                      borderSide: const BorderSide(
+                      borderSide: BorderSide(
                         color: Colors.transparent,
                         width: 1.0,
                       ),

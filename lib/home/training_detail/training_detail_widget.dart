@@ -6,12 +6,13 @@ import 'package:sticky_headers/sticky_headers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'training_detail_model.dart';
 export 'training_detail_model.dart';
 
 class TrainingDetailWidget extends StatefulWidget {
-  const TrainingDetailWidget({super.key});
+  const TrainingDetailWidget({Key? key}) : super(key: key);
 
   @override
   _TrainingDetailWidgetState createState() => _TrainingDetailWidgetState();
@@ -68,7 +69,7 @@ class _TrainingDetailWidgetState extends State<TrainingDetailWidget> {
                 ),
               ),
               Align(
-                alignment: const AlignmentDirectional(0.00, 1.00),
+                alignment: AlignmentDirectional(0.00, 1.00),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -77,7 +78,7 @@ class _TrainingDetailWidgetState extends State<TrainingDetailWidget> {
                       child: Container(
                         width: double.infinity,
                         height: MediaQuery.sizeOf(context).height * 0.7,
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           color: Color(0x00FF5963),
                         ),
                         child: SingleChildScrollView(
@@ -87,7 +88,7 @@ class _TrainingDetailWidgetState extends State<TrainingDetailWidget> {
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 256.0, 0.0, 0.0),
                                 child: StickyHeader(
                                   overlapHeaders: false,
@@ -104,16 +105,16 @@ class _TrainingDetailWidgetState extends State<TrainingDetailWidget> {
                                       ),
                                     ),
                                     alignment:
-                                        const AlignmentDirectional(-1.00, 0.00),
+                                        AlignmentDirectional(-1.00, 0.00),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(-1.00, 0.00),
+                                              AlignmentDirectional(-1.00, 0.00),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 32.0, 0.0, 0.0),
                                             child: Text(
                                               'Day 01 - Warm Up',
@@ -132,10 +133,10 @@ class _TrainingDetailWidgetState extends State<TrainingDetailWidget> {
                                         ),
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(-1.00, 0.00),
+                                              AlignmentDirectional(-1.00, 0.00),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 8.0, 0.0, 0.0),
                                             child: Text(
                                               '04 Workouts for Beginner',
@@ -168,7 +169,7 @@ class _TrainingDetailWidgetState extends State<TrainingDetailWidget> {
                                       children: [
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   16.0, 32.0, 0.0, 0.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -178,17 +179,17 @@ class _TrainingDetailWidgetState extends State<TrainingDetailWidget> {
                                                   print('Button pressed ...');
                                                 },
                                                 text: '60 min',
-                                                icon: const Icon(
+                                                icon: Icon(
                                                   Icons.play_circle_rounded,
                                                   size: 15.0,
                                                 ),
                                                 options: FFButtonOptions(
                                                   height: 30.0,
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           10.0, 0.0, 14.0, 0.0),
                                                   iconPadding:
-                                                      const EdgeInsetsDirectional
+                                                      EdgeInsetsDirectional
                                                           .fromSTEB(0.0, 0.0,
                                                               0.0, 0.0),
                                                   color: FlutterFlowTheme.of(
@@ -205,7 +206,7 @@ class _TrainingDetailWidgetState extends State<TrainingDetailWidget> {
                                                             FontWeight.normal,
                                                       ),
                                                   elevation: 3.0,
-                                                  borderSide: const BorderSide(
+                                                  borderSide: BorderSide(
                                                     color: Colors.transparent,
                                                     width: 1.0,
                                                   ),
@@ -215,7 +216,7 @@ class _TrainingDetailWidgetState extends State<TrainingDetailWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         20.0, 0.0, 0.0, 0.0),
                                                 child: FFButtonWidget(
@@ -223,18 +224,18 @@ class _TrainingDetailWidgetState extends State<TrainingDetailWidget> {
                                                     print('Button pressed ...');
                                                   },
                                                   text: '350 Cal',
-                                                  icon: const FaIcon(
+                                                  icon: FaIcon(
                                                     FontAwesomeIcons.fire,
                                                     size: 15.0,
                                                   ),
                                                   options: FFButtonOptions(
                                                     height: 30.0,
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(10.0, 0.0,
                                                                 14.0, 0.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: FlutterFlowTheme.of(
@@ -251,7 +252,7 @@ class _TrainingDetailWidgetState extends State<TrainingDetailWidget> {
                                                               FontWeight.normal,
                                                         ),
                                                     elevation: 3.0,
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Colors.transparent,
                                                       width: 1.0,
                                                     ),
@@ -266,7 +267,7 @@ class _TrainingDetailWidgetState extends State<TrainingDetailWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 32.0, 0.0, 0.0),
                                           child: Builder(
                                             builder: (context) {
@@ -287,12 +288,12 @@ class _TrainingDetailWidgetState extends State<TrainingDetailWidget> {
                                                   final siuItem = siu[siuIndex];
                                                   return Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(16.0, 0.0,
                                                                 16.0, 0.0),
                                                     child: Container(
                                                       width: double.infinity,
-                                                      decoration: const BoxDecoration(
+                                                      decoration: BoxDecoration(
                                                         color:
                                                             Color(0x0014181B),
                                                       ),
@@ -316,7 +317,7 @@ class _TrainingDetailWidgetState extends State<TrainingDetailWidget> {
                                                             children: [
                                                               Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             14.0,
@@ -346,13 +347,13 @@ class _TrainingDetailWidgetState extends State<TrainingDetailWidget> {
                                                                             4.0,
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .alternate,
-                                                                        offset: const Offset(
+                                                                        offset: Offset(
                                                                             0.0,
                                                                             2.0),
                                                                       )
                                                                     ],
                                                                     borderRadius:
-                                                                        const BorderRadius
+                                                                        BorderRadius
                                                                             .only(
                                                                       bottomLeft:
                                                                           Radius.circular(
@@ -375,12 +376,12 @@ class _TrainingDetailWidgetState extends State<TrainingDetailWidget> {
                                                               Expanded(
                                                                 child: Align(
                                                                   alignment:
-                                                                      const AlignmentDirectional(
+                                                                      AlignmentDirectional(
                                                                           -1.00,
                                                                           1.00),
                                                                   child:
                                                                       Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             14.0,
@@ -397,7 +398,7 @@ class _TrainingDetailWidgetState extends State<TrainingDetailWidget> {
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .alternate,
                                                                         borderRadius:
-                                                                            const BorderRadius.only(
+                                                                            BorderRadius.only(
                                                                           bottomLeft:
                                                                               Radius.circular(0.0),
                                                                           bottomRight:
@@ -418,13 +419,13 @@ class _TrainingDetailWidgetState extends State<TrainingDetailWidget> {
                                                                           Expanded(
                                                                             child:
                                                                                 Padding(
-                                                                              padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
                                                                               child: Column(
                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                 mainAxisAlignment: MainAxisAlignment.end,
                                                                                 children: [
                                                                                   Align(
-                                                                                    alignment: const AlignmentDirectional(-1.00, 1.00),
+                                                                                    alignment: AlignmentDirectional(-1.00, 1.00),
                                                                                     child: Text(
                                                                                       'Simple Warm-Up\nExercises',
                                                                                       maxLines: 1,
@@ -435,9 +436,9 @@ class _TrainingDetailWidgetState extends State<TrainingDetailWidget> {
                                                                                     ),
                                                                                   ),
                                                                                   Align(
-                                                                                    alignment: const AlignmentDirectional(-1.00, 1.00),
+                                                                                    alignment: AlignmentDirectional(-1.00, 1.00),
                                                                                     child: Padding(
-                                                                                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                                                                       child: Text(
                                                                                         '0:30',
                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -453,7 +454,7 @@ class _TrainingDetailWidgetState extends State<TrainingDetailWidget> {
                                                                             ),
                                                                           ),
                                                                           Padding(
-                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
                                                                                 0.0,
                                                                                 0.0,
                                                                                 16.0,
@@ -485,7 +486,7 @@ class _TrainingDetailWidgetState extends State<TrainingDetailWidget> {
                                         Container(
                                           width: 100.0,
                                           height: 100.0,
-                                          decoration: const BoxDecoration(
+                                          decoration: BoxDecoration(
                                             color: Color(0x001D2428),
                                           ),
                                         ),
@@ -503,10 +504,10 @@ class _TrainingDetailWidgetState extends State<TrainingDetailWidget> {
                 ),
               ),
               Align(
-                alignment: const AlignmentDirectional(0.00, 1.00),
+                alignment: AlignmentDirectional(0.00, 1.00),
                 child: Container(
                   height: 189.0,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [Color(0x11111200), Color(0xFF111112)],
                       stops: [0.0, 1.0],
@@ -514,13 +515,13 @@ class _TrainingDetailWidgetState extends State<TrainingDetailWidget> {
                       end: AlignmentDirectional(0, 1.0),
                     ),
                   ),
-                  alignment: const AlignmentDirectional(0.00, 1.00),
+                  alignment: AlignmentDirectional(0.00, 1.00),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             0.0, 0.0, 16.0, 16.0),
                         child: FFButtonWidget(
                           onPressed: () {
@@ -529,9 +530,9 @@ class _TrainingDetailWidgetState extends State<TrainingDetailWidget> {
                           text: 'Start Workout',
                           options: FFButtonOptions(
                             height: 50.0,
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 24.0, 13.0, 24.0, 13.0),
-                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).primary,
                             textStyle: FlutterFlowTheme.of(context)
@@ -543,7 +544,7 @@ class _TrainingDetailWidgetState extends State<TrainingDetailWidget> {
                                   fontWeight: FontWeight.w600,
                                 ),
                             elevation: 3.0,
-                            borderSide: const BorderSide(
+                            borderSide: BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),

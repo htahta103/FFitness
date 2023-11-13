@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-import 'package:awesome_number_picker/awesome_number_picker.dart';
 import 'dart:math';
 
 class WeightPickerWidget extends StatefulWidget {

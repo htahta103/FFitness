@@ -91,9 +91,10 @@ class _TrainingDetailWidgetState extends State<TrainingDetailWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 256.0, 0.0, 0.0),
                                 child: StickyHeader(
-                                  overlapHeaders: false,
+                                  overlapHeaders: true,
                                   header: Container(
                                     width: double.infinity,
+                                    height: 150.0,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
                                           .primaryBackground,
@@ -101,7 +102,6 @@ class _TrainingDetailWidgetState extends State<TrainingDetailWidget> {
                                       border: Border.all(
                                         color: FlutterFlowTheme.of(context)
                                             .primaryBackground,
-                                        width: 2.0,
                                       ),
                                     ),
                                     alignment:
@@ -278,13 +278,10 @@ class _TrainingDetailWidgetState extends State<TrainingDetailWidget> {
                                                           .randomName(
                                                               false, true))
                                                   .toList();
-                                              return ListView.builder(
-                                                padding: EdgeInsets.zero,
-                                                shrinkWrap: true,
-                                                scrollDirection: Axis.vertical,
-                                                itemCount: siu.length,
-                                                itemBuilder:
-                                                    (context, siuIndex) {
+                                              return Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: List.generate(
+                                                    siu.length, (siuIndex) {
                                                   final siuItem = siu[siuIndex];
                                                   return Padding(
                                                     padding:
@@ -478,7 +475,7 @@ class _TrainingDetailWidgetState extends State<TrainingDetailWidget> {
                                                       ),
                                                     ),
                                                   );
-                                                },
+                                                }),
                                               );
                                             },
                                           ),

@@ -13,12 +13,11 @@ Future getHealthData() async {
   var types = [
     HealthDataType.STEPS,
     HealthDataType.HEART_RATE,
-
-    // HealthDataType.ACTIVE_ENERGY_BURNED
+    HealthDataType.ACTIVE_ENERGY_BURNED,
     HealthDataType.SLEEP_SESSION
   ];
   HealthFactory health = HealthFactory(useHealthConnectIfAvailable: true);
-  var permissions = [types].map((e) => HealthDataAccess.READ).toList();
+  var permissions = types.map((e) => HealthDataAccess.READ).toList();
   await Permission.activityRecognition.request();
   await Permission.location.request();
   var a;
@@ -41,9 +40,11 @@ Future getHealthData() async {
       .getHealthDataFromTypes(midnight, endDate, [HealthDataType.HEART_RATE]);
   var sleep = await health.getHealthDataFromTypes(
       midnight, endDate, [HealthDataType.SLEEP_SESSION]);
-  print('heart rate nè: => ' + heartRate[0].value.toString());
-  var ss= sleep[0].toJson()['value']['numericValue'];
-  print('Sleep nè: => ' + ss);
-  print('heart rate nè: => ' + steps.toString());
+  var active_calor = await health
+      .getHealthDataFromTypes(midnight, endDate, [HealthDataType.ACTIVE_ENERGY_BURNED]);
+  // print('heart rate nè: => ' + heartRate[0].value.toString());
+  // var ss = sleep[0].toJson()['value']['numericValue'];
+  // print('Sleep nè: => ' + ss);
+  // print('heart rate nè: => ' + steps.toString());
   var d = 1;
 }

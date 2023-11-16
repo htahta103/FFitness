@@ -49,7 +49,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 ),
               ),
             )
-          : ReelsPageWidget(),
+          : InsightWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
@@ -67,7 +67,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                     ),
                   ),
                 )
-              : ReelsPageWidget(),
+              : InsightWidget(),
         ),
         FFRoute(
           name: 'SplashScreen',

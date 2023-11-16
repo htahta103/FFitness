@@ -3,10 +3,10 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
-import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:provider/provider.dart';
@@ -32,7 +32,9 @@ class _InsightWidgetState extends State<InsightWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      await actions.getHealthData();
+      await actions.getHealthData(
+        _model.date,
+      );
     });
   }
 
@@ -78,10 +80,11 @@ class _InsightWidgetState extends State<InsightWidget> {
                 onChange: (DateTimeRange? newSelectedDate) async {
                   _model.calendarSelectedDay = newSelectedDate;
                   setState(() {
-                    _model.cal = random_data.randomInteger(0, 2000);
-                    _model.steps = random_data.randomInteger(0, 1000);
-                    _model.time = random_data.randomInteger(0, 360);
-                    _model.heartRate = random_data.randomInteger(0, 150);
+                    _model.date =
+                        dateTimeFromSecondsSinceEpoch(valueOrDefault<int>(
+                      _model.calendarSelectedDay?.start?.secondsSinceEpoch,
+                      0,
+                    ));
                   });
                   setState(() {});
                 },
@@ -106,7 +109,7 @@ class _InsightWidgetState extends State<InsightWidget> {
                           alignment: AlignmentDirectional(0.00, 0.00),
                           child: CircularPercentIndicator(
                             percent: valueOrDefault<double>(
-                              _model.cal! / 2000,
+                              FFAppState().calories / 2000,
                               0.0,
                             ),
                             radius: 84.0,
@@ -136,10 +139,7 @@ class _InsightWidgetState extends State<InsightWidget> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      valueOrDefault<String>(
-                                        _model.cal?.toString(),
-                                        '0',
-                                      ),
+                                      FFAppState().calories.toString(),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -218,7 +218,7 @@ class _InsightWidgetState extends State<InsightWidget> {
                                 alignment: AlignmentDirectional(0.00, 0.00),
                                 child: CircularPercentIndicator(
                                   percent: valueOrDefault<double>(
-                                    _model.steps! / 10000,
+                                    FFAppState().step / 10000,
                                     0.0,
                                   ),
                                   radius: 55.0,
@@ -274,10 +274,7 @@ class _InsightWidgetState extends State<InsightWidget> {
                                               MainAxisAlignment.center,
                                           children: [
                                             Text(
-                                              valueOrDefault<String>(
-                                                _model.steps?.toString(),
-                                                '0',
-                                              ),
+                                              FFAppState().step.toString(),
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
@@ -311,7 +308,7 @@ class _InsightWidgetState extends State<InsightWidget> {
                                 alignment: AlignmentDirectional(0.00, 0.00),
                                 child: CircularPercentIndicator(
                                   percent: valueOrDefault<double>(
-                                    _model.time! / 360,
+                                    FFAppState().sleep / 360,
                                     0.0,
                                   ),
                                   radius: 55.0,
@@ -362,10 +359,7 @@ class _InsightWidgetState extends State<InsightWidget> {
                                             MainAxisAlignment.center,
                                         children: [
                                           Text(
-                                            valueOrDefault<String>(
-                                              _model.time?.toString(),
-                                              '0',
-                                            ),
+                                            FFAppState().sleep.toString(),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
@@ -413,7 +407,7 @@ class _InsightWidgetState extends State<InsightWidget> {
                                 alignment: AlignmentDirectional(0.00, 0.00),
                                 child: CircularPercentIndicator(
                                   percent: valueOrDefault<double>(
-                                    _model.heartRate! / 150,
+                                    FFAppState().heartRate / 150,
                                     0.0,
                                   ),
                                   radius: 55.0,
@@ -469,10 +463,7 @@ class _InsightWidgetState extends State<InsightWidget> {
                                               MainAxisAlignment.center,
                                           children: [
                                             Text(
-                                              valueOrDefault<String>(
-                                                _model.heartRate?.toString(),
-                                                '0',
-                                              ),
+                                              FFAppState().heartRate.toString(),
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium

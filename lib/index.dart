@@ -19,10 +19,8 @@ export '/login/signup/signup_widget.dart' show SignupWidget;
 export '/login/login_forgot/login_forgot_widget.dart' show LoginForgotWidget;
 export '/login/login_verify_code/login_verify_code_widget.dart'
     show LoginVerifyCodeWidget;
-export '/reels_page/reels_page_widget.dart' show ReelsPageWidget;
+export '/home/reels_page/reels_page_widget.dart' show ReelsPageWidget;
 export '/home/home_page/home_page_widget.dart' show HomePageWidget;
-export '/home/home_page_copy/home_page_copy_widget.dart'
-    show HomePageCopyWidget;
 export '/home/training_detail/training_detail_widget.dart'
     show TrainingDetailWidget;
-export '/insight/insight_widget.dart' show InsightWidget;
+export '/home/insight/insight_widget.dart' show InsightWidget;

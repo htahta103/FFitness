@@ -132,7 +132,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'ReelsPage',
           path: '/reelsPage',
-          builder: (context, params) => ReelsPageWidget(),
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'ReelsPage')
+              : ReelsPageWidget(),
         ),
         FFRoute(
           name: 'HomePage',
@@ -142,13 +144,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               : HomePageWidget(),
         ),
         FFRoute(
-          name: 'HomePageCopy',
-          path: '/homePageCopy',
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'HomePageCopy')
-              : HomePageCopyWidget(),
-        ),
-        FFRoute(
           name: 'TrainingDetail',
           path: '/trainingDetail',
           builder: (context, params) => TrainingDetailWidget(),
@@ -156,7 +151,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'Insight',
           path: '/insight',
-          builder: (context, params) => InsightWidget(),
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'Insight')
+              : InsightWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

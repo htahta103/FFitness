@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-Future getHealthData() async {
+Future getHealthData(DateTime date)async{
   var types = [
     HealthDataType.STEPS,
     HealthDataType.HEART_RATE,
@@ -27,14 +27,13 @@ Future getHealthData() async {
     print("Exception in authorize: $error");
   }
 
-  var now = DateTime.now();
 
   // fetch health data from the last 24 hours
 
   // request permissions to write steps and blood glucose
   // get the number of steps for today
-  var midnight = DateTime(now.year, now.month, now.day);
-  var endDate = DateTime(now.year, now.month, now.day, 23, 59, 59);
+  var midnight = DateTime(date.year, date.month, date.day);
+  var endDate = DateTime(date.year, date.month, date.day, 23, 59, 59);
   int? steps = await health.getTotalStepsInInterval(midnight, endDate);
   var heartRate = await health
       .getHealthDataFromTypes(midnight, endDate, [HealthDataType.HEART_RATE]);

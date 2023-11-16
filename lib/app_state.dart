@@ -127,6 +127,30 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInActivities(int _index, String _value) {
     _activities.insert(_index, _value);
   }
+
+  int _heartRate = 0;
+  int get heartRate => _heartRate;
+  set heartRate(int _value) {
+    _heartRate = _value;
+  }
+
+  int _sleep = 0;
+  int get sleep => _sleep;
+  set sleep(int _value) {
+    _sleep = _value;
+  }
+
+  int _step = 0;
+  int get step => _step;
+  set step(int _value) {
+    _step = _value;
+  }
+
+  int _calories = 0;
+  int get calories => _calories;
+  set calories(int _value) {
+    _calories = _value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

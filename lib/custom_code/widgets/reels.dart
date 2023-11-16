@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
 import 'index.dart'; // Imports other custom widgets
-
+import 'package:like_button/like_button.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:video_player/video_player.dart';
 import 'package:preload_page_view/preload_page_view.dart';
@@ -61,6 +61,7 @@ class _VideoReelPageState extends State<VideoReelPage> {
     super.initState();
     _pageController = PreloadPageController(initialPage: widget.index);
     _currentPageController = BehaviorSubject<int>();
+    _currentPageController.sink.add(0);
   }
 
   @override
@@ -111,14 +112,22 @@ class VideoPlayerWidget extends StatefulWidget {
 }
 
 class _VideoPlayerWidgetState extends State<VideoPlayerWidget>
-    with WidgetsBindingObserver {
+    with WidgetsBindingObserver, TickerProviderStateMixin {
   VideoPlayerController? _controller;
+  late BehaviorSubject<bool> heartController;
+  bool _isDoubleTapDetected = false;
+  late AnimationController cdSpinController;
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
     initializeController();
+    heartController = BehaviorSubject();
+    cdSpinController = AnimationController(
+      duration: const Duration(seconds: 10),
+      vsync: this,
+    )..repeat(reverse: false);
   }
 
   bool _videoInitialized = false;
@@ -130,18 +139,19 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget>
       fileInfo = await kCacheManager.getFileFromCache(widget.reelUrl);
     }
     if (mounted) {
+      _controller?.play();
+      _controller?.pause();
       _controller = VideoPlayerController.file(fileInfo!.file)
         ..initialize().then((value) {
-          _controller?.play();
-          _controller?.pause();
+          _controller!.setLooping(true);
 
           widget.pageIndex.listen((currentIndex) {
-            print(currentIndex);
             if (widget.index == currentIndex) {
               setState(() {
-                _controller?.play();
                 _videoInitialized = true;
               });
+              _controller?.play();
+              cdSpinController.repeat();
             }
           });
         });
@@ -153,19 +163,20 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget>
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     super.didChangeAppLifecycleState(state);
-    if (state == AppLifecycleState.resumed) {
-      // App is in the foreground
-      _controller?.play();
-    } else if (state == AppLifecycleState.inactive) {
-      // App is partially obscured
-      _controller?.pause();
-    } else if (state == AppLifecycleState.paused) {
-      // App is in the background
-      _controller?.pause();
-    } else if (state == AppLifecycleState.detached) {
-      // App is terminated
+    // if (state == AppLifecycleState.resumed) {
+    //   // App is in the foreground
+    //   _controller?.play();
+    // } else if (state == AppLifecycleState.inactive) {
+    //   // App is partially obscured
+    //   _controller?.pause();
+    // } else if (state == AppLifecycleState.paused) {
+    //   // App is in the background
+    //   _controller?.pause();
+    // } else
+    if (state == AppLifecycleState.detached) {
       _controller?.dispose();
     }
+    // }
   }
 
   @override
@@ -173,6 +184,8 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget>
     print('disposing a controller');
     if (mounted) {
       _controller?.dispose();
+      heartController.close();
+      cdSpinController.dispose();
     } // Dispose of the controller when done
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
@@ -187,18 +200,28 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget>
       child: Stack(
         children: [
           GestureDetector(
+            behavior: HitTestBehavior.opaque,
             onTap: () {
-              if (_videoInitialized) {
+              if (!_isDoubleTapDetected && _videoInitialized) {
                 setState(() {
                   if (_controller?.value.isPlaying ?? false) {
                     _controller?.pause();
+                    cdSpinController.stop();
                     _isPlaying = false;
                   } else {
                     _controller?.play();
+                    cdSpinController.repeat();
                     _isPlaying = true;
                   }
                 });
               }
+            },
+            onDoubleTap: () {
+              _isDoubleTapDetected = true;
+              Future.delayed(const Duration(milliseconds: 1000), () {
+                _isDoubleTapDetected = false;
+              });
+              heartController.sink.add(true);
             },
             child: Stack(
               alignment: AlignmentDirectional.bottomEnd,
@@ -237,12 +260,20 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget>
                           bufferedColor: Colors.grey,
                           backgroundColor: Colors.white,
                         ),
-                      )
+                      ),
+                HeartAnimation(
+                    animateStream: heartController,
+                    duration: const Duration(seconds: 3)),
               ],
             ),
           ),
           // here you can add title, user Info,
           // description, views count etc.
+
+          VideoContentWidget(
+            likeController: heartController,
+            cdSpinController: cdSpinController,
+          )
         ],
       ),
     );
@@ -295,5 +326,646 @@ class ReelService {
 
   List<String> getReels() {
     return _reels;
+  }
+}
+
+class VideoContentWidget extends StatefulWidget {
+  final BehaviorSubject<bool> likeController;
+  final AnimationController cdSpinController;
+
+  const VideoContentWidget(
+      {super.key,
+      required this.likeController,
+      required this.cdSpinController});
+
+  @override
+  State<VideoContentWidget> createState() => _VideoContentWidgetState();
+}
+
+class _VideoContentWidgetState extends State<VideoContentWidget> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        // Positioned.fill(
+        //   child: ContentInfo(
+        //     uiModel: widget.data,
+        //   ),
+        // ),
+        Positioned.fill(
+            right: 0,
+            bottom: 0,
+            left: MediaQuery.of(context).size.width - 60,
+            child: actionsSection()),
+      ],
+    );
+  }
+
+  Widget actionsSection() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        // MCircleButton(
+        //   size: AppDimens.circleButtonSize.h,
+        // ),
+        StreamBuilder<bool>(
+            stream: widget.likeController,
+            builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+              return LikeButton(
+                isLiked: snapshot.data,
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                countPostion: CountPostion.bottom,
+                likeCount: 100,
+                onTap: (onTap) async {
+                  widget.likeController.sink.add(!onTap);
+                },
+                likeBuilder: (isLiked) {
+                  return Icon(
+                    Icons.favorite,
+                    color: isLiked
+                        ? FlutterFlowTheme.of(context).error
+                        : FlutterFlowTheme.of(context).primaryText,
+                    size: 30,
+                  );
+                },
+              );
+            }),
+        LikeButton(
+          onTap: (isLiked) async {
+            await showModalBottomSheet(
+              isScrollControlled: true,
+              context: context,
+              builder: (context) {
+                return const CommentsSection();
+              },
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              backgroundColor: Colors.transparent,
+            );
+            return false;
+          },
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          likeBuilder: (isLiked) => Icon(
+            Icons.comment,
+            color: FlutterFlowTheme.of(context).primaryText,
+          ),
+          likeCount: 888,
+          countPostion: CountPostion.bottom,
+        ),
+        LikeButton(
+          onTap: (isLiked) async {
+            return false;
+          },
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          likeBuilder: (isLiked) => Icon(
+            Icons.share,
+            color: FlutterFlowTheme.of(context).primaryText,
+          ),
+          countPostion: CountPostion.bottom,
+        ),
+        //   saveButton(),
+        CircleMusicWidget(
+          controller: widget.cdSpinController,
+        ),
+        const SizedBox(
+          height: 15,
+        )
+      ],
+    );
+  }
+}
+//   Widget saveButton() {
+//     return LikeButton(
+//       padding: EdgeInsets.symmetric(vertical: 10.h),
+//       onTap: ((isLiked) async {
+//         return !isLiked;
+//       }),
+//       size: AppDimens.buttonSize.h,
+//       isLiked: false,
+//       circleColor: CircleColor(
+//         start: Colors.grey[200]!,
+//         end: Colors.grey[400]!,
+//       ),
+//       bubblesColor: BubblesColor(
+//         dotPrimaryColor: Colors.grey[600]!,
+//         dotSecondaryColor: Colors.grey[200]!,
+//       ),
+//       likeBuilder: (bool isLiked) {
+//         return Icon(
+//           Icons.bookmark,
+//           color: isLiked ? Colors.yellow : Colors.white,
+//           size: AppDimens.buttonSize.h,
+//         );
+//       },
+//       likeCount: 888,
+//       countPostion: CountPostion.bottom,
+//       countBuilder: (int? count, bool isLiked, String text) {
+//         return Text(
+//           count == 0 ? 'love' : text,
+//           style: const TextStyle(
+//             color: Colors.white,
+//           ),
+//         );
+//       },
+//     );
+//   }
+// }
+
+class HeartAnimation extends StatefulWidget {
+  final Stream<bool> animateStream;
+  final Duration duration;
+  const HeartAnimation(
+      {super.key, required this.animateStream, required this.duration});
+  @override
+  State<HeartAnimation> createState() => _HeartAnimationState();
+}
+
+class _HeartAnimationState extends State<HeartAnimation>
+    with SingleTickerProviderStateMixin {
+  late AnimationController controller;
+  late Animation<double> scale;
+  late Animation<double> opacityIn;
+  late Animation<double> opacityOut;
+  late Animation<double> rotate;
+  late Animation<RelativeRect> transform;
+  @override
+  void initState() {
+    super.initState();
+    controller = AnimationController(vsync: this, duration: widget.duration);
+    //Stagging animation
+    scale = Tween<double>(begin: 1, end: 1.2).animate(
+      CurvedAnimation(
+        parent: controller,
+        curve: const Interval(
+          0,
+          0.3,
+          curve: Curves.ease,
+        ),
+      ),
+    );
+    opacityIn = Tween<double>(begin: 0, end: 1).animate(
+      CurvedAnimation(
+        parent: controller,
+        curve: const Interval(
+          0,
+          0.3,
+          curve: Curves.ease,
+        ),
+      ),
+    );
+    opacityOut = Tween<double>(begin: 1, end: 0).animate(
+      CurvedAnimation(
+        parent: controller,
+        curve: const Interval(
+          0.4,
+          1,
+          curve: Curves.ease,
+        ),
+      ),
+    );
+
+    transform = RelativeRectTween(
+            begin: const RelativeRect.fromLTRB(0, 0, 0, 0),
+            end: const RelativeRect.fromLTRB(0, -300, -300, 0))
+        .animate(
+      CurvedAnimation(
+        parent: controller,
+        curve: const Interval(
+          0.4,
+          1,
+          curve: Curves.linear,
+        ),
+      ),
+    );
+    rotate = Tween<double>(begin: 0, end: -1).animate(
+      CurvedAnimation(
+        parent: controller,
+        curve: const Interval(
+          0.4,
+          1,
+          curve: Curves.ease,
+        ),
+      ),
+    );
+    widget.animateStream.listen((event) {
+      if (event) {
+        print('animate ne');
+        doAnimation();
+      }
+    });
+  }
+
+  Future doAnimation() async {
+    controller.stop();
+    controller.reset();
+    await controller.forward();
+    controller.reset();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return PositionedTransition(
+      rect: transform,
+      child: RotationTransition(
+        turns: rotate,
+        child: ScaleTransition(
+          scale: scale,
+          child: FadeTransition(
+            opacity: opacityOut,
+            child: FadeTransition(
+              opacity: opacityIn,
+              child: IgnorePointer(
+                child: Icon(
+                  Icons.favorite_rounded,
+                  size: 100,
+                  color: FlutterFlowTheme.of(context).error,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+}
+
+class CommentsSection extends StatelessWidget {
+  const CommentsSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Positioned.fill(
+          top: 300,
+          child: Container(
+            color: FlutterFlowTheme.of(context).primaryBackground,
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const SizedBox(
+                      width: 30,
+                    ),
+                    Expanded(
+                        child: Text(
+                      '2 Comments',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontSize: 15,
+                          color: FlutterFlowTheme.of(context).primaryText),
+                    )),
+                    IconButton(
+                      icon: const Icon(Icons.close),
+                      onPressed: () async {
+                        context.safePop();
+                      },
+                    ),
+                  ],
+                ),
+                const Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        CommentWidget(),
+                        CommentWidget(),
+                        CommentWidget(),
+                        CommentWidget(),
+                        CommentWidget(),
+                        CommentWidget(),
+                        CommentWidget(),
+                        CommentWidget(),
+                        CommentWidget(),
+                        CommentWidget(),
+                        CommentWidget(),
+                        CommentWidget(),
+                        CommentWidget(),
+                        CommentWidget(),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        // MediaQuery.of(context).viewInsets.bottom > 0
+        //     ? Positioned.fill(
+        //         child: MInkwell(
+        //           child: Container(
+        //             color: Colors.red,
+        //           ),
+        //         ),
+        //       )
+        //     : const SizedBox(),
+        const Align(
+          alignment: Alignment.bottomCenter,
+          child: TextField(),
+        )
+      ],
+    );
+  }
+}
+
+//CD playing widget
+
+class CircleContainer extends StatelessWidget {
+  final Color? bgColor;
+  final Color? borderColor;
+  final EdgeInsets? margin;
+  final EdgeInsets? padding;
+  final Widget child;
+  final bool? haveBorder;
+  final Gradient? gradient;
+  final double? size;
+  const CircleContainer(
+      {super.key,
+      this.bgColor,
+      required this.child,
+      this.margin,
+      this.padding,
+      this.haveBorder,
+      this.gradient,
+      this.size,
+      this.borderColor});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: margin,
+      padding: padding,
+      width: size,
+      height: size,
+      decoration: BoxDecoration(
+        color: gradient != null ? null : (bgColor ?? Colors.transparent),
+        borderRadius: BorderRadius.circular(45),
+        gradient: gradient,
+        border: haveBorder ?? true
+            ? Border.all(color: borderColor ?? Colors.white, width: 2)
+            : null,
+        boxShadow: const [
+          // BoxShadow(
+          //   blurRadius: AppDimens.kBlurRadiusTopBar.w,
+          //   offset: Offset(0, 4.h),
+          //   color: AppColors.boxShadow,
+          // )
+        ],
+      ),
+      child: child,
+    );
+  }
+}
+
+class CircleAnimatedContainer extends StatelessWidget {
+  final Color? bgColor;
+  final Color? borderColor;
+  final EdgeInsets? margin;
+  final EdgeInsets? padding;
+  final Widget child;
+  final bool? haveBorder;
+  final Gradient? gradient;
+  final double? size;
+  final AnimationController controller;
+  const CircleAnimatedContainer({
+    super.key,
+    this.bgColor,
+    required this.child,
+    this.margin,
+    this.padding,
+    this.haveBorder,
+    this.gradient,
+    this.size,
+    required this.controller,
+    this.borderColor,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return RotationTransition(
+      turns: CurvedAnimation(
+        parent: controller,
+        curve: Curves.linear,
+      ),
+      child: CircleContainer(
+        bgColor: bgColor,
+        margin: margin,
+        padding: padding,
+        haveBorder: haveBorder,
+        gradient: gradient,
+        size: size,
+        borderColor: borderColor,
+        child: child,
+      ),
+    );
+  }
+}
+
+class CircleMusicWidget extends StatelessWidget {
+  final AnimationController controller;
+  const CircleMusicWidget({super.key, required this.controller});
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        CircleAnimatedContainer(
+          controller: controller,
+          haveBorder: false,
+          size: 49,
+          gradient: cdGradient,
+          child: Center(
+              child: Icon(
+            Icons.music_note,
+            color: FlutterFlowTheme.of(context).primaryText,
+          )),
+        ),
+      ],
+    );
+  }
+}
+
+final LinearGradient cdGradient = LinearGradient(
+    begin: Alignment.topRight,
+    end: Alignment.bottomLeft,
+    stops: const [
+      0.1257,
+      0.3838,
+      0.6278,
+      0.8803,
+    ],
+    colors: [
+      const Color(0xFF171717).withOpacity(1),
+      const Color(0xFF373736).withOpacity(1),
+      const Color(0xFF171717).withOpacity(1),
+      const Color(0xFF373736).withOpacity(1)
+    ]);
+
+/// End CD playing
+
+/// Comment Widget
+class CommentWidget extends StatelessWidget {
+  final String? user;
+  final String? comment;
+  const CommentWidget({super.key, this.user, this.comment});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(10),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          MCircleButton(
+            margin: const EdgeInsets.only(right: 5),
+            size: 30,
+            bgColor: FlutterFlowTheme.of(context).primary,
+            haveAddFriendButton: false,
+          ),
+          Expanded(child: content(context)),
+        ],
+      ),
+    );
+  }
+
+  Widget content(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text(
+          user ?? 'Username',
+          style: TextStyle(
+              color: FlutterFlowTheme.of(context).primaryText, fontSize: 14),
+        ),
+        const SizedBox(
+          height: 2,
+        ),
+        Text(
+          comment ?? 'Comment',
+          style: TextStyle(
+              color: FlutterFlowTheme.of(context).primaryText, fontSize: 12),
+        ),
+        const SizedBox(
+          height: 2,
+        ),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const Expanded(child: Text('2h')),
+            LikeButton(
+              size: 15,
+              countPostion: CountPostion.right,
+              likeCount: 0,
+              likeBuilder: (isLiked) => isLiked
+                  ? Icon(
+                      Icons.favorite_rounded,
+                      color: FlutterFlowTheme.of(context).error,
+                      size: 15,
+                    )
+                  : Icon(
+                      Icons.favorite_border_outlined,
+                      color: FlutterFlowTheme.of(context).error,
+                      size: 15,
+                    ),
+            ),
+            const SizedBox(
+              width: 16,
+            )
+          ],
+        )
+      ],
+    );
+  }
+}
+
+class MCircleButton extends StatefulWidget {
+  final VoidCallback? onPressed;
+  final Widget? child;
+  final double? size;
+  final Color? bgColor;
+  final Color? borderColor;
+  final VoidCallback? addFriendColors;
+  final bool haveAddFriendButton;
+  final EdgeInsets? margin;
+  const MCircleButton(
+      {Key? key,
+      this.child,
+      this.onPressed,
+      this.size,
+      this.bgColor,
+      this.addFriendColors,
+      this.haveAddFriendButton = true,
+      this.margin,
+      this.borderColor})
+      : super(key: key);
+
+  @override
+  State<MCircleButton> createState() => _MCardState();
+}
+
+class _MCardState extends State<MCircleButton>
+    with SingleTickerProviderStateMixin {
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        CircleContainer(
+          margin: widget.margin ??
+              const EdgeInsets.symmetric(vertical: 7.5, horizontal: 5),
+          bgColor: widget.bgColor,
+          borderColor: widget.borderColor,
+          child: InkWell(
+            onTap: widget.onPressed,
+            child: Stack(
+              children: [
+                SizedBox(
+                  width: widget.size,
+                  height: widget.size,
+                  child: Center(child: widget.child),
+                ),
+              ],
+            ),
+          ),
+        ),
+        widget.haveAddFriendButton
+            ? Positioned(
+                bottom: 0,
+                left: 0,
+                right: 0,
+                child: Center(
+                  child: CircleContainer(
+                    haveBorder: false,
+                    padding: const EdgeInsets.all(1),
+                    bgColor: FlutterFlowTheme.of(context).error,
+                    child: Icon(
+                      Icons.add,
+                      color: FlutterFlowTheme.of(context).primaryText,
+                      size: 15,
+                    ),
+                  ),
+                ),
+              )
+            : const SizedBox.shrink()
+      ],
+    );
   }
 }

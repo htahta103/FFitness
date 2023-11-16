@@ -117,7 +117,8 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       'HomePage': HomePageWidget(),
-      'HomePageCopy': HomePageCopyWidget(),
+      'ReelsPage': ReelsPageWidget(),
+      'Insight': InsightWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -146,8 +147,17 @@ class _NavBarPageState extends State<NavBarPage> {
           BottomNavigationBarItem(
             icon: FaIcon(
               FontAwesomeIcons.play,
+              size: 24.0,
             ),
-            label: '',
+            label: 'Home',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: FaIcon(
+              FontAwesomeIcons.chartPie,
+              size: 24.0,
+            ),
+            label: 'Home',
             tooltip: '',
           )
         ],

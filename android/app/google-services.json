@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "914753304850",
+    "project_id": "ffitness-9dde1",
+    "storage_bucket": "ffitness-9dde1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:914753304850:android:fe894d50cc2286f2129bcb",
+        "android_client_info": {
+          "package_name": "com.mycompany.ffitness"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5WO8HyMXTjHtoVxDxuPuMFbxtNqE457Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

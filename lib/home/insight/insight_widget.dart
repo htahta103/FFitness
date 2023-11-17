@@ -86,6 +86,12 @@ class _InsightWidgetState extends State<InsightWidget> {
                       0,
                     ));
                   });
+                  await actions.getHealthData(
+                    dateTimeFromSecondsSinceEpoch(valueOrDefault<int>(
+                      _model.calendarSelectedDay?.start?.secondsSinceEpoch,
+                      0,
+                    )),
+                  );
                   setState(() {});
                 },
                 titleStyle: FlutterFlowTheme.of(context).headlineSmall,

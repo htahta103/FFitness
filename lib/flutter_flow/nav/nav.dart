@@ -49,7 +49,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 ),
               ),
             )
-          : InsightWidget(),
+          : OnboardingPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
@@ -67,7 +67,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                     ),
                   ),
                 )
-              : InsightWidget(),
+              : OnboardingPageWidget(),
         ),
         FFRoute(
           name: 'SplashScreen',

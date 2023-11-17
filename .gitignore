@@ -1,0 +1,4 @@
+pubspec.lock
+build/
+.dart_tool/
+android/mykey.jks

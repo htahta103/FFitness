@@ -1,3 +1,5 @@
+import 'package:f_fitness/custom_code/actions/get_health_data.dart';
+
 import '/flutter_flow/flutter_flow_calendar.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -32,9 +34,7 @@ class _InsightWidgetState extends State<InsightWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      await actions.getHealthData(
-        _model.date,
-      );
+      await actions.getHealthData(_model.date ?? DateTime.now());
     });
   }
 
@@ -79,14 +79,7 @@ class _InsightWidgetState extends State<InsightWidget> {
                 rowHeight: 64.0,
                 onChange: (DateTimeRange? newSelectedDate) async {
                   _model.calendarSelectedDay = newSelectedDate;
-                  setState(() {
-                    _model.date =
-                        dateTimeFromSecondsSinceEpoch(valueOrDefault<int>(
-                      _model.calendarSelectedDay?.start?.secondsSinceEpoch,
-                      0,
-                    ));
-                  });
-                  setState(() {});
+                  await getHealthData(_model.calendarSelectedDay?.start??DateTime.now());
                 },
                 titleStyle: FlutterFlowTheme.of(context).headlineSmall,
                 dayOfWeekStyle: FlutterFlowTheme.of(context).labelLarge,
@@ -308,7 +301,7 @@ class _InsightWidgetState extends State<InsightWidget> {
                                 alignment: AlignmentDirectional(0.00, 0.00),
                                 child: CircularPercentIndicator(
                                   percent: valueOrDefault<double>(
-                                    FFAppState().sleep / 360,
+                                    FFAppState().sleep / 600,
                                     0.0,
                                   ),
                                   radius: 55.0,

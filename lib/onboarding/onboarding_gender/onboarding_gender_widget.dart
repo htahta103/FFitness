@@ -91,7 +91,7 @@ class _OnboardingGenderWidgetState extends State<OnboardingGenderWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 400.ms,
-          begin: Offset(0.0, 20.0),
+          begin: Offset(0.0, -20.0),
           end: Offset(0.0, 0.0),
         ),
       ],
@@ -222,22 +222,6 @@ class _OnboardingGenderWidgetState extends State<OnboardingGenderWidget>
                               setState(() {
                                 FFAppState().selectedGender = 'male';
                               });
-                              if (animationsMap[
-                                      'containerOnActionTriggerAnimation1'] !=
-                                  null) {
-                                animationsMap[
-                                        'containerOnActionTriggerAnimation1']!
-                                    .controller
-                                    .forward(from: 0.0);
-                              }
-                              if (animationsMap[
-                                      'containerOnActionTriggerAnimation2'] !=
-                                  null) {
-                                animationsMap[
-                                        'containerOnActionTriggerAnimation2']!
-                                    .controller
-                                    .reverse();
-                              }
                             },
                             child: Container(
                               width: 140.0,
@@ -295,22 +279,6 @@ class _OnboardingGenderWidgetState extends State<OnboardingGenderWidget>
                             setState(() {
                               FFAppState().selectedGender = 'female';
                             });
-                            if (animationsMap[
-                                    'containerOnActionTriggerAnimation2'] !=
-                                null) {
-                              animationsMap[
-                                      'containerOnActionTriggerAnimation2']!
-                                  .controller
-                                  .forward(from: 0.0);
-                            }
-                            if (animationsMap[
-                                    'containerOnActionTriggerAnimation2'] !=
-                                null) {
-                              animationsMap[
-                                      'containerOnActionTriggerAnimation2']!
-                                  .controller
-                                  .reverse();
-                            }
                           },
                           child: Container(
                             width: 140.0,
@@ -388,6 +356,7 @@ class _OnboardingGenderWidgetState extends State<OnboardingGenderWidget>
                           FlutterFlowTheme.of(context).titleSmall.override(
                                 fontFamily: 'Figtree',
                                 color: Colors.black,
+                                fontWeight: FontWeight.w600,
                               ),
                       elevation: 3.0,
                       borderSide: BorderSide(

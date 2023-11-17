@@ -459,6 +459,9 @@ class _LoginForgotWidgetState extends State<LoginForgotWidget>
                                                                         context)
                                                                     .primaryBackground,
                                                                 fontSize: 17.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
                                                               ),
                                                       elevation: 3.0,
                                                       borderSide: BorderSide(

@@ -105,7 +105,7 @@ class _OnboardingHeightWidgetState extends State<OnboardingHeightWidget> {
                       height: double.infinity,
                       minValue: 1,
                       maxValue: 100,
-                      initialValue: 25,
+                      initialValue: 170,
                       extraText: 'cm',
                       mode: 'height',
                     ),
@@ -163,6 +163,7 @@ class _OnboardingHeightWidgetState extends State<OnboardingHeightWidget> {
                                     fontFamily: 'Figtree',
                                     color: FlutterFlowTheme.of(context)
                                         .primaryBackground,
+                                    fontWeight: FontWeight.w600,
                                   ),
                           elevation: 3.0,
                           borderSide: BorderSide(

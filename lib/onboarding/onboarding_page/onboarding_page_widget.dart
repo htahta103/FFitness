@@ -318,7 +318,7 @@ class _OnboardingPageWidgetState extends State<OnboardingPageWidget> {
                                               },
                                               text: 'Start Now',
                                               options: FFButtonOptions(
-                                                height: 40.0,
+                                                height: 50.0,
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         24.0, 13.0, 24.0, 13.0),
@@ -337,6 +337,9 @@ class _OnboardingPageWidgetState extends State<OnboardingPageWidget> {
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryBackground,
+                                                          fontSize: 18.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
                                                         ),
                                                 elevation: 3.0,
                                                 borderSide: BorderSide(

@@ -24,3 +24,4 @@ export '/home/home_page/home_page_widget.dart' show HomePageWidget;
 export '/home/training_detail/training_detail_widget.dart'
     show TrainingDetailWidget;
 export '/home/insight/insight_widget.dart' show InsightWidget;
+export '/home/personal/personal_widget.dart' show PersonalWidget;

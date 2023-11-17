@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -874,6 +875,42 @@ class _SignupWidgetState extends State<SignupWidget>
                                                           .validate()) {
                                                     return;
                                                   }
+                                                  GoRouter.of(context)
+                                                      .prepareAuthEvent();
+                                                  if (_model.passwordController
+                                                          .text !=
+                                                      _model
+                                                          .passwordagainController
+                                                          .text) {
+                                                    ScaffoldMessenger.of(
+                                                            context)
+                                                        .showSnackBar(
+                                                      SnackBar(
+                                                        content: Text(
+                                                          'Passwords don\'t match!',
+                                                        ),
+                                                      ),
+                                                    );
+                                                    return;
+                                                  }
+
+                                                  final user = await authManager
+                                                      .createAccountWithEmail(
+                                                    context,
+                                                    _model.emailController.text,
+                                                    _model.passwordController
+                                                        .text,
+                                                  );
+                                                  if (user == null) {
+                                                    return;
+                                                  }
+
+                                                  await authManager
+                                                      .sendEmailVerification();
+
+                                                  context.goNamedAuth(
+                                                      'loginDefault',
+                                                      context.mounted);
                                                 },
                                                 text: 'Sign up',
                                                 options: FFButtonOptions(

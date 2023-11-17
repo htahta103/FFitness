@@ -79,7 +79,20 @@ class _InsightWidgetState extends State<InsightWidget> {
                 rowHeight: 64.0,
                 onChange: (DateTimeRange? newSelectedDate) async {
                   _model.calendarSelectedDay = newSelectedDate;
-                  await getHealthData(_model.calendarSelectedDay?.start??DateTime.now());
+                  setState(() {
+                    _model.date =
+                        dateTimeFromSecondsSinceEpoch(valueOrDefault<int>(
+                      _model.calendarSelectedDay?.start?.secondsSinceEpoch,
+                      0,
+                    ));
+                  });
+                  await actions.getHealthData(
+                    dateTimeFromSecondsSinceEpoch(valueOrDefault<int>(
+                      _model.calendarSelectedDay?.start?.secondsSinceEpoch,
+                      0,
+                    )),
+                  );
+                  setState(() {});
                 },
                 titleStyle: FlutterFlowTheme.of(context).headlineSmall,
                 dayOfWeekStyle: FlutterFlowTheme.of(context).labelLarge,

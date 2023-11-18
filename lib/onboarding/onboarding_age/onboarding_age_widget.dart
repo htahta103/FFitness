@@ -105,7 +105,7 @@ class _OnboardingAgeWidgetState extends State<OnboardingAgeWidget> {
                       height: double.infinity,
                       minValue: 1,
                       maxValue: 100,
-                      initialValue: 25,
+                      initialValue: FFAppState().selectedAge,
                     ),
                   ),
                 ),

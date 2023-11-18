@@ -143,8 +143,8 @@ class _OnboardingActivityWidgetState extends State<OnboardingActivityWidget> {
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
                       child: FFButtonWidget(
-                        onPressed: () {
-                          print('Button pressed ...');
+                        onPressed: () async {
+                          context.pushNamed('loginDefault');
                         },
                         text: 'Next',
                         options: FFButtonOptions(
@@ -160,6 +160,7 @@ class _OnboardingActivityWidgetState extends State<OnboardingActivityWidget> {
                                     fontFamily: 'Figtree',
                                     color: FlutterFlowTheme.of(context)
                                         .primaryBackground,
+                                    fontWeight: FontWeight.w600,
                                   ),
                           elevation: 3.0,
                           borderSide: BorderSide(

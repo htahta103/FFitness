@@ -934,6 +934,8 @@ class _SignupWidgetState extends State<SignupWidget>
                                                                 .of(context)
                                                             .primaryBackground,
                                                         fontSize: 17.0,
+                                                        fontWeight:
+                                                            FontWeight.w600,
                                                       ),
                                                   elevation: 3.0,
                                                   borderSide: BorderSide(

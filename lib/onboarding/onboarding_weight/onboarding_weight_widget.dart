@@ -231,6 +231,7 @@ class _OnboardingWeightWidgetState extends State<OnboardingWeightWidget> {
                                     fontFamily: 'Figtree',
                                     color: FlutterFlowTheme.of(context)
                                         .primaryBackground,
+                                    fontWeight: FontWeight.w600,
                                   ),
                           elevation: 3.0,
                           borderSide: BorderSide(

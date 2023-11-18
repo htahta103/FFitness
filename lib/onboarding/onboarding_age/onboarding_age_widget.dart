@@ -105,7 +105,7 @@ class _OnboardingAgeWidgetState extends State<OnboardingAgeWidget> {
                       height: double.infinity,
                       minValue: 1,
                       maxValue: 100,
-                      initialValue: 25,
+                      initialValue: FFAppState().selectedAge,
                     ),
                   ),
                 ),
@@ -161,6 +161,7 @@ class _OnboardingAgeWidgetState extends State<OnboardingAgeWidget> {
                                     fontFamily: 'Figtree',
                                     color: FlutterFlowTheme.of(context)
                                         .primaryBackground,
+                                    fontWeight: FontWeight.w600,
                                   ),
                           elevation: 3.0,
                           borderSide: BorderSide(

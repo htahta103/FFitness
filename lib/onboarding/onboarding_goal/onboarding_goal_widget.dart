@@ -160,6 +160,7 @@ class _OnboardingGoalWidgetState extends State<OnboardingGoalWidget> {
                                     fontFamily: 'Figtree',
                                     color: FlutterFlowTheme.of(context)
                                         .primaryBackground,
+                                    fontWeight: FontWeight.w600,
                                   ),
                           elevation: 3.0,
                           borderSide: BorderSide(

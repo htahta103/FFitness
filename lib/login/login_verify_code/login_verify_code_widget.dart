@@ -398,6 +398,9 @@ class _LoginVerifyCodeWidgetState extends State<LoginVerifyCodeWidget>
                                                                         context)
                                                                     .primaryBackground,
                                                                 fontSize: 17.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
                                                               ),
                                                       elevation: 3.0,
                                                       borderSide: BorderSide(

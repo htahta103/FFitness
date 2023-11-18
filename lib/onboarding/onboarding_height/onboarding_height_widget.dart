@@ -103,9 +103,9 @@ class _OnboardingHeightWidgetState extends State<OnboardingHeightWidget> {
                     child: custom_widgets.IntergerPickerWidget(
                       width: double.infinity,
                       height: double.infinity,
-                      minValue: 1,
-                      maxValue: 100,
-                      initialValue: 25,
+                      minValue: 120,
+                      maxValue: 250,
+                      initialValue: FFAppState().selectedHeight,
                       extraText: 'cm',
                       mode: 'height',
                     ),
@@ -163,6 +163,7 @@ class _OnboardingHeightWidgetState extends State<OnboardingHeightWidget> {
                                     fontFamily: 'Figtree',
                                     color: FlutterFlowTheme.of(context)
                                         .primaryBackground,
+                                    fontWeight: FontWeight.w600,
                                   ),
                           elevation: 3.0,
                           borderSide: BorderSide(

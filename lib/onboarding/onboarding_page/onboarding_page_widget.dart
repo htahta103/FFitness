@@ -57,137 +57,58 @@ class _OnboardingPageWidgetState extends State<OnboardingPageWidget> {
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: SafeArea(
           top: true,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Expanded(
-                child: Container(
-                  width: double.infinity,
-                  height: double.infinity,
-                  child: Stack(
-                    children: [
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 30.0),
-                        child: PageView(
-                          controller: _model.pageViewController ??=
-                              PageController(initialPage: 0),
-                          scrollDirection: Axis.horizontal,
-                          children: [
-                            Stack(
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 12.0),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(12.0),
-                                    child: Image.asset(
-                                      'assets/images/Fitness-for-10-Home-Club-Locator.jpg',
-                                      width: double.infinity,
-                                      height: double.infinity,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                                Align(
-                                  alignment: AlignmentDirectional(0.00, 1.00),
-                                  child: Container(
-                                    width: double.infinity,
-                                    height: 300.0,
-                                    decoration: BoxDecoration(
-                                      gradient: LinearGradient(
-                                        colors: [
-                                          Color(0x001D2428),
-                                          FlutterFlowTheme.of(context)
-                                              .primaryBackground
-                                        ],
-                                        stops: [0.0, 0.5],
-                                        begin: AlignmentDirectional(0.0, -1.0),
-                                        end: AlignmentDirectional(0, 1.0),
-                                      ),
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          32.0, 32.0, 32.0, 32.0),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.end,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    12.0, 0.0, 0.0, 0.0),
-                                            child: Text(
-                                              'MEET YOUR COACH,',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .headlineMedium,
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    12.0, 4.0, 12.0, 0.0),
-                                            child: Text(
-                                              'START YOUR JOURNEY',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .headlineSmall
-                                                      .override(
-                                                        fontFamily: 'Figtree',
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                      ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Stack(
-                              children: [
-                                Align(
-                                  alignment: AlignmentDirectional(0.00, 0.00),
-                                  child: Padding(
+          child: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Expanded(
+                  child: Container(
+                    width: double.infinity,
+                    height: double.infinity,
+                    child: Stack(
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 30.0),
+                          child: PageView(
+                            controller: _model.pageViewController ??=
+                                PageController(initialPage: 0),
+                            scrollDirection: Axis.horizontal,
+                            children: [
+                              Stack(
+                                children: [
+                                  Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 12.0),
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(12.0),
                                       child: Image.asset(
-                                        'assets/images/equipment_(6).jpg',
+                                        'assets/images/Fitness-for-10-Home-Club-Locator.jpg',
                                         width: double.infinity,
                                         height: double.infinity,
                                         fit: BoxFit.cover,
                                       ),
                                     ),
                                   ),
-                                ),
-                                Align(
-                                  alignment: AlignmentDirectional(0.00, 1.00),
-                                  child: Container(
-                                    width: double.infinity,
-                                    height: 300.0,
-                                    decoration: BoxDecoration(
-                                      gradient: LinearGradient(
-                                        colors: [
-                                          Color(0x001D2428),
-                                          FlutterFlowTheme.of(context)
-                                              .primaryBackground
-                                        ],
-                                        stops: [0.0, 0.5],
-                                        begin: AlignmentDirectional(0.0, -1.0),
-                                        end: AlignmentDirectional(0, 1.0),
+                                  Align(
+                                    alignment: AlignmentDirectional(0.00, 1.00),
+                                    child: Container(
+                                      width: double.infinity,
+                                      height: 300.0,
+                                      decoration: BoxDecoration(
+                                        gradient: LinearGradient(
+                                          colors: [
+                                            Color(0x001D2428),
+                                            FlutterFlowTheme.of(context)
+                                                .primaryBackground
+                                          ],
+                                          stops: [0.0, 0.5],
+                                          begin:
+                                              AlignmentDirectional(0.0, -1.0),
+                                          end: AlignmentDirectional(0, 1.0),
+                                        ),
                                       ),
-                                    ),
-                                    child: Align(
-                                      alignment:
-                                          AlignmentDirectional(0.00, 1.00),
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             32.0, 32.0, 32.0, 32.0),
@@ -203,7 +124,7 @@ class _OnboardingPageWidgetState extends State<OnboardingPageWidget> {
                                                   .fromSTEB(
                                                       12.0, 0.0, 0.0, 0.0),
                                               child: Text(
-                                                'CREATE A WORKOUT PLAN',
+                                                'MEET YOUR COACH,',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .headlineMedium,
@@ -214,7 +135,7 @@ class _OnboardingPageWidgetState extends State<OnboardingPageWidget> {
                                                   .fromSTEB(
                                                       12.0, 4.0, 12.0, 0.0),
                                               child: Text(
-                                                'TO STAY FIT',
+                                                'START YOUR JOURNEY',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .headlineSmall
@@ -230,172 +151,261 @@ class _OnboardingPageWidgetState extends State<OnboardingPageWidget> {
                                       ),
                                     ),
                                   ),
-                                ),
-                              ],
-                            ),
-                            Stack(
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 12.0),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(12.0),
-                                    child: Image.asset(
-                                      'assets/images/fit_stats.webp',
-                                      width: double.infinity,
-                                      height: double.infinity,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                                Align(
-                                  alignment: AlignmentDirectional(0.00, 1.00),
-                                  child: Container(
-                                    width: double.infinity,
-                                    height: 300.0,
-                                    decoration: BoxDecoration(
-                                      gradient: LinearGradient(
-                                        colors: [
-                                          Color(0x001D2428),
-                                          FlutterFlowTheme.of(context)
-                                              .primaryBackground
-                                        ],
-                                        stops: [0.0, 0.4],
-                                        begin: AlignmentDirectional(0.0, -1.0),
-                                        end: AlignmentDirectional(0, 1.0),
-                                      ),
-                                    ),
+                                ],
+                              ),
+                              Stack(
+                                children: [
+                                  Align(
+                                    alignment: AlignmentDirectional(0.00, 0.00),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          12.0, 12.0, 12.0, 12.0),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.end,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    12.0, 4.0, 12.0, 0.0),
-                                            child: Text(
-                                              'ACTION IS THE',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .headlineSmall
-                                                      .override(
-                                                        fontFamily: 'Figtree',
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    12.0, 4.0, 12.0, 0.0),
-                                            child: Text(
-                                              'KEY TO ALL SUCCESS',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
+                                          0.0, 0.0, 0.0, 12.0),
+                                      child: ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(12.0),
+                                        child: Image.asset(
+                                          'assets/images/equipment_(6).jpg',
+                                          width: double.infinity,
+                                          height: double.infinity,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Align(
+                                    alignment: AlignmentDirectional(0.00, 1.00),
+                                    child: Container(
+                                      width: double.infinity,
+                                      height: 300.0,
+                                      decoration: BoxDecoration(
+                                        gradient: LinearGradient(
+                                          colors: [
+                                            Color(0x001D2428),
+                                            FlutterFlowTheme.of(context)
+                                                .primaryBackground
+                                          ],
+                                          stops: [0.0, 0.5],
+                                          begin:
+                                              AlignmentDirectional(0.0, -1.0),
+                                          end: AlignmentDirectional(0, 1.0),
+                                        ),
+                                      ),
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional(0.00, 1.00),
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  32.0, 32.0, 32.0, 32.0),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.end,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        12.0, 0.0, 0.0, 0.0),
+                                                child: Text(
+                                                  'CREATE A WORKOUT PLAN',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .headlineMedium,
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        12.0, 4.0, 12.0, 0.0),
+                                                child: Text(
+                                                  'TO STAY FIT',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
                                                       .headlineSmall
                                                       .override(
                                                         fontFamily: 'Figtree',
                                                         fontWeight:
                                                             FontWeight.bold,
                                                       ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 53.0, 0.0, 0.0),
-                                            child: FFButtonWidget(
-                                              onPressed: () async {
-                                                context.pushNamed(
-                                                    'onboardingGender');
-                                              },
-                                              text: 'Start Now',
-                                              options: FFButtonOptions(
-                                                height: 50.0,
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        24.0, 13.0, 24.0, 13.0),
-                                                iconPadding:
-                                                    EdgeInsetsDirectional
-                                                        .fromSTEB(
-                                                            0.0, 0.0, 0.0, 0.0),
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                textStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleSmall
-                                                        .override(
-                                                          fontFamily: 'Figtree',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryBackground,
-                                                          fontSize: 18.0,
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                        ),
-                                                elevation: 3.0,
-                                                borderSide: BorderSide(
-                                                  color: Colors.transparent,
-                                                  width: 1.0,
                                                 ),
-                                                borderRadius:
-                                                    BorderRadius.circular(48.0),
                                               ),
-                                            ),
+                                            ],
                                           ),
-                                        ],
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              ],
-                            ),
-                          ],
+                                ],
+                              ),
+                              Stack(
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 12.0),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(12.0),
+                                      child: Image.asset(
+                                        'assets/images/fit_stats.webp',
+                                        width: double.infinity,
+                                        height: double.infinity,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+                                  Align(
+                                    alignment: AlignmentDirectional(0.00, 1.00),
+                                    child: Container(
+                                      width: double.infinity,
+                                      height: 300.0,
+                                      decoration: BoxDecoration(
+                                        gradient: LinearGradient(
+                                          colors: [
+                                            Color(0x001D2428),
+                                            FlutterFlowTheme.of(context)
+                                                .primaryBackground
+                                          ],
+                                          stops: [0.0, 0.4],
+                                          begin:
+                                              AlignmentDirectional(0.0, -1.0),
+                                          end: AlignmentDirectional(0, 1.0),
+                                        ),
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            12.0, 12.0, 12.0, 12.0),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.end,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      12.0, 4.0, 12.0, 0.0),
+                                              child: Text(
+                                                'ACTION IS THE',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .headlineSmall
+                                                        .override(
+                                                          fontFamily: 'Figtree',
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      12.0, 4.0, 12.0, 0.0),
+                                              child: Text(
+                                                'KEY TO ALL SUCCESS',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .headlineSmall
+                                                        .override(
+                                                          fontFamily: 'Figtree',
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 53.0, 0.0, 0.0),
+                                              child: FFButtonWidget(
+                                                onPressed: () async {
+                                                  context.pushNamed(
+                                                      'onboardingGender');
+                                                },
+                                                text: 'Start Now',
+                                                options: FFButtonOptions(
+                                                  height: 50.0,
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(24.0, 13.0,
+                                                          24.0, 13.0),
+                                                  iconPadding:
+                                                      EdgeInsetsDirectional
+                                                          .fromSTEB(0.0, 0.0,
+                                                              0.0, 0.0),
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primary,
+                                                  textStyle: FlutterFlowTheme
+                                                          .of(context)
+                                                      .titleSmall
+                                                      .override(
+                                                        fontFamily: 'Figtree',
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .primaryBackground,
+                                                        fontSize: 18.0,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                      ),
+                                                  elevation: 3.0,
+                                                  borderSide: BorderSide(
+                                                    color: Colors.transparent,
+                                                    width: 1.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          48.0),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(0.00, 1.00),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 10.0),
-                          child: smooth_page_indicator.SmoothPageIndicator(
-                            controller: _model.pageViewController ??=
-                                PageController(initialPage: 0),
-                            count: 3,
-                            axisDirection: Axis.horizontal,
-                            onDotClicked: (i) async {
-                              await _model.pageViewController!.animateToPage(
-                                i,
-                                duration: Duration(milliseconds: 500),
-                                curve: Curves.ease,
-                              );
-                            },
-                            effect: smooth_page_indicator.ExpandingDotsEffect(
-                              expansionFactor: 2.0,
-                              spacing: 8.0,
-                              radius: 16.0,
-                              dotWidth: 16.0,
-                              dotHeight: 4.0,
-                              dotColor: FlutterFlowTheme.of(context).alternate,
-                              activeDotColor: Color(0xFFD0FD3E),
-                              paintStyle: PaintingStyle.fill,
+                        Align(
+                          alignment: AlignmentDirectional(0.00, 1.00),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 10.0),
+                            child: smooth_page_indicator.SmoothPageIndicator(
+                              controller: _model.pageViewController ??=
+                                  PageController(initialPage: 0),
+                              count: 3,
+                              axisDirection: Axis.horizontal,
+                              onDotClicked: (i) async {
+                                await _model.pageViewController!.animateToPage(
+                                  i,
+                                  duration: Duration(milliseconds: 500),
+                                  curve: Curves.ease,
+                                );
+                              },
+                              effect: smooth_page_indicator.ExpandingDotsEffect(
+                                expansionFactor: 2.0,
+                                spacing: 8.0,
+                                radius: 16.0,
+                                dotWidth: 16.0,
+                                dotHeight: 4.0,
+                                dotColor:
+                                    FlutterFlowTheme.of(context).alternate,
+                                activeDotColor: Color(0xFFD0FD3E),
+                                paintStyle: PaintingStyle.fill,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

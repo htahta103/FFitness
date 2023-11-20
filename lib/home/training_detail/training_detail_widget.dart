@@ -95,7 +95,7 @@ class _TrainingDetailWidgetState extends State<TrainingDetailWidget> {
                                   overlapHeaders: true,
                                   header: Container(
                                     width: double.infinity,
-                                    height: 150.0,
+                                    height: 120.0,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
                                           .primaryBackground,
@@ -159,74 +159,32 @@ class _TrainingDetailWidgetState extends State<TrainingDetailWidget> {
                                       ],
                                     ),
                                   ),
-                                  content: Container(
-                                    width: double.infinity,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryBackground,
-                                    ),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  16.0, 32.0, 0.0, 0.0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              FFButtonWidget(
-                                                onPressed: () {
-                                                  print('Button pressed ...');
-                                                },
-                                                text: '60 min',
-                                                icon: Icon(
-                                                  Icons.play_circle_rounded,
-                                                  size: 15.0,
-                                                ),
-                                                options: FFButtonOptions(
-                                                  height: 30.0,
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          10.0, 0.0, 14.0, 0.0),
-                                                  iconPadding:
-                                                      EdgeInsetsDirectional
-                                                          .fromSTEB(0.0, 0.0,
-                                                              0.0, 0.0),
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .alternate,
-                                                  textStyle: FlutterFlowTheme
-                                                          .of(context)
-                                                      .titleSmall
-                                                      .override(
-                                                        fontFamily: 'Figtree',
-                                                        color: Colors.white,
-                                                        fontSize: 13.0,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                      ),
-                                                  elevation: 3.0,
-                                                  borderSide: BorderSide(
-                                                    color: Colors.transparent,
-                                                    width: 1.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          50.0),
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        20.0, 0.0, 0.0, 0.0),
-                                                child: FFButtonWidget(
+                                  content: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 110.0, 0.0, 0.0),
+                                    child: Container(
+                                      width: double.infinity,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                      ),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    16.0, 32.0, 0.0, 0.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                FFButtonWidget(
                                                   onPressed: () {
                                                     print('Button pressed ...');
                                                   },
-                                                  text: '350 Cal',
-                                                  icon: FaIcon(
-                                                    FontAwesomeIcons.fire,
+                                                  text: '60 min',
+                                                  icon: Icon(
+                                                    Icons.play_circle_rounded,
                                                     size: 15.0,
                                                   ),
                                                   options: FFButtonOptions(
@@ -262,229 +220,293 @@ class _TrainingDetailWidgetState extends State<TrainingDetailWidget> {
                                                             50.0),
                                                   ),
                                                 ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        Builder(
-                                          builder: (context) {
-                                            final siu = List.generate(
-                                                random_data.randomInteger(
-                                                    5, 10),
-                                                (index) =>
-                                                    random_data.randomName(
-                                                        false, true)).toList();
-                                            return Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: List.generate(
-                                                  siu.length, (siuIndex) {
-                                                final siuItem = siu[siuIndex];
-                                                return Padding(
+                                                Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(
-                                                          16.0, 0.0, 16.0, 0.0),
-                                                  child: Container(
-                                                    width: double.infinity,
-                                                    decoration: BoxDecoration(
-                                                      color: Color(0x0014181B),
+                                                          20.0, 0.0, 0.0, 0.0),
+                                                  child: FFButtonWidget(
+                                                    onPressed: () {
+                                                      print(
+                                                          'Button pressed ...');
+                                                    },
+                                                    text: '350 Cal',
+                                                    icon: FaIcon(
+                                                      FontAwesomeIcons.fire,
+                                                      size: 15.0,
                                                     ),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .center,
-                                                      children: [
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      14.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                          child: Container(
-                                                            width: 76.0,
-                                                            height: 76.0,
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              color: Color(
-                                                                  0x001D2428),
-                                                              image:
-                                                                  DecorationImage(
-                                                                fit: BoxFit
-                                                                    .cover,
+                                                    options: FFButtonOptions(
+                                                      height: 30.0,
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  10.0,
+                                                                  0.0,
+                                                                  14.0,
+                                                                  0.0),
+                                                      iconPadding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .alternate,
+                                                      textStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Figtree',
+                                                                color: Colors
+                                                                    .white,
+                                                                fontSize: 13.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .normal,
+                                                              ),
+                                                      elevation: 3.0,
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            Colors.transparent,
+                                                        width: 1.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              50.0),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Builder(
+                                            builder: (context) {
+                                              final siu = List.generate(
+                                                      random_data.randomInteger(
+                                                          5, 10),
+                                                      (index) => random_data
+                                                          .randomName(
+                                                              false, true))
+                                                  .toList();
+                                              return Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: List.generate(
+                                                    siu.length, (siuIndex) {
+                                                  final siuItem = siu[siuIndex];
+                                                  return Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(16.0, 0.0,
+                                                                16.0, 0.0),
+                                                    child: Container(
+                                                      width: double.infinity,
+                                                      decoration: BoxDecoration(
+                                                        color:
+                                                            Color(0x0014181B),
+                                                      ),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .start,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        14.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            child: Container(
+                                                              width: 76.0,
+                                                              height: 76.0,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                color: Color(
+                                                                    0x001D2428),
                                                                 image:
-                                                                    Image.asset(
-                                                                  'assets/images/do-it-for-you-1200x670-tile-image.jpg',
-                                                                ).image,
+                                                                    DecorationImage(
+                                                                  fit: BoxFit
+                                                                      .cover,
+                                                                  image: Image
+                                                                      .asset(
+                                                                    'assets/images/do-it-for-you-1200x670-tile-image.jpg',
+                                                                  ).image,
+                                                                ),
+                                                                boxShadow: [
+                                                                  BoxShadow(
+                                                                    blurRadius:
+                                                                        4.0,
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .alternate,
+                                                                    offset:
+                                                                        Offset(
+                                                                            0.0,
+                                                                            2.0),
+                                                                  )
+                                                                ],
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .only(
+                                                                  bottomLeft: Radius
+                                                                      .circular(
+                                                                          16.0),
+                                                                  bottomRight: Radius
+                                                                      .circular(
+                                                                          0.0),
+                                                                  topLeft: Radius
+                                                                      .circular(
+                                                                          16.0),
+                                                                  topRight: Radius
+                                                                      .circular(
+                                                                          0.0),
+                                                                ),
+                                                                shape: BoxShape
+                                                                    .rectangle,
                                                               ),
-                                                              boxShadow: [
-                                                                BoxShadow(
-                                                                  blurRadius:
-                                                                      4.0,
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .alternate,
-                                                                  offset:
-                                                                      Offset(
-                                                                          0.0,
-                                                                          2.0),
-                                                                )
-                                                              ],
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .only(
-                                                                bottomLeft: Radius
-                                                                    .circular(
-                                                                        16.0),
-                                                                bottomRight: Radius
-                                                                    .circular(
-                                                                        0.0),
-                                                                topLeft: Radius
-                                                                    .circular(
-                                                                        16.0),
-                                                                topRight: Radius
-                                                                    .circular(
-                                                                        0.0),
-                                                              ),
-                                                              shape: BoxShape
-                                                                  .rectangle,
                                                             ),
                                                           ),
-                                                        ),
-                                                        Expanded(
-                                                          child: Align(
-                                                            alignment:
-                                                                AlignmentDirectional(
-                                                                    -1.00,
-                                                                    1.00),
-                                                            child: Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          14.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Container(
-                                                                width: double
-                                                                    .infinity,
-                                                                height: 76.0,
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .alternate,
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .only(
-                                                                    bottomLeft:
-                                                                        Radius.circular(
+                                                          Expanded(
+                                                            child: Align(
+                                                              alignment:
+                                                                  AlignmentDirectional(
+                                                                      -1.00,
+                                                                      1.00),
+                                                              child: Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            14.0,
+                                                                            0.0,
                                                                             0.0),
-                                                                    bottomRight:
-                                                                        Radius.circular(
-                                                                            16.0),
-                                                                    topLeft: Radius
-                                                                        .circular(
-                                                                            0.0),
-                                                                    topRight: Radius
-                                                                        .circular(
-                                                                            16.0),
+                                                                child:
+                                                                    Container(
+                                                                  width: double
+                                                                      .infinity,
+                                                                  height: 76.0,
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .alternate,
+                                                                    borderRadius:
+                                                                        BorderRadius
+                                                                            .only(
+                                                                      bottomLeft:
+                                                                          Radius.circular(
+                                                                              0.0),
+                                                                      bottomRight:
+                                                                          Radius.circular(
+                                                                              16.0),
+                                                                      topLeft: Radius
+                                                                          .circular(
+                                                                              0.0),
+                                                                      topRight:
+                                                                          Radius.circular(
+                                                                              16.0),
+                                                                    ),
+                                                                    shape: BoxShape
+                                                                        .rectangle,
                                                                   ),
-                                                                  shape: BoxShape
-                                                                      .rectangle,
-                                                                ),
-                                                                child: Row(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  children: [
-                                                                    Expanded(
-                                                                      child:
-                                                                          Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            16.0,
-                                                                            16.0,
-                                                                            16.0,
-                                                                            16.0),
+                                                                  child: Row(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    children: [
+                                                                      Expanded(
                                                                         child:
-                                                                            Column(
-                                                                          mainAxisSize:
-                                                                              MainAxisSize.max,
-                                                                          mainAxisAlignment:
-                                                                              MainAxisAlignment.end,
-                                                                          children: [
-                                                                            Align(
-                                                                              alignment: AlignmentDirectional(-1.00, 1.00),
-                                                                              child: Text(
-                                                                                'Simple Warm-Up\nExercises',
-                                                                                maxLines: 1,
-                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                      fontFamily: 'Figtree',
-                                                                                      fontSize: 17.0,
-                                                                                    ),
-                                                                              ),
-                                                                            ),
-                                                                            Align(
-                                                                              alignment: AlignmentDirectional(-1.00, 1.00),
-                                                                              child: Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                                                            Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              16.0,
+                                                                              16.0,
+                                                                              16.0,
+                                                                              16.0),
+                                                                          child:
+                                                                              Column(
+                                                                            mainAxisSize:
+                                                                                MainAxisSize.max,
+                                                                            mainAxisAlignment:
+                                                                                MainAxisAlignment.end,
+                                                                            children: [
+                                                                              Align(
+                                                                                alignment: AlignmentDirectional(-1.00, 1.00),
                                                                                 child: Text(
-                                                                                  '0:30',
+                                                                                  'Simple Warm-Up\nExercises',
+                                                                                  maxLines: 1,
                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                         fontFamily: 'Figtree',
-                                                                                        color: FlutterFlowTheme.of(context).primary,
-                                                                                        fontSize: 13.0,
+                                                                                        fontSize: 17.0,
                                                                                       ),
                                                                                 ),
                                                                               ),
-                                                                            ),
-                                                                          ],
+                                                                              Align(
+                                                                                alignment: AlignmentDirectional(-1.00, 1.00),
+                                                                                child: Padding(
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                                                                  child: Text(
+                                                                                    '0:30',
+                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                          fontFamily: 'Figtree',
+                                                                                          color: FlutterFlowTheme.of(context).primary,
+                                                                                          fontSize: 13.0,
+                                                                                        ),
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                            ],
+                                                                          ),
                                                                         ),
                                                                       ),
-                                                                    ),
-                                                                    Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          16.0,
-                                                                          0.0),
-                                                                      child:
-                                                                          Icon(
-                                                                        Icons
-                                                                            .play_arrow_rounded,
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .secondaryText,
-                                                                        size:
-                                                                            24.0,
+                                                                      Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            16.0,
+                                                                            0.0),
+                                                                        child:
+                                                                            Icon(
+                                                                          Icons
+                                                                              .play_arrow_rounded,
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).secondaryText,
+                                                                          size:
+                                                                              24.0,
+                                                                        ),
                                                                       ),
-                                                                    ),
-                                                                  ],
+                                                                    ],
+                                                                  ),
                                                                 ),
                                                               ),
                                                             ),
                                                           ),
-                                                        ),
-                                                      ],
+                                                        ],
+                                                      ),
                                                     ),
-                                                  ),
-                                                );
-                                              }),
-                                            );
-                                          },
-                                        ),
-                                        Container(
-                                          width: 100.0,
-                                          height: 100.0,
-                                          decoration: BoxDecoration(
-                                            color: Color(0x001D2428),
+                                                  );
+                                                }),
+                                              );
+                                            },
                                           ),
-                                        ),
-                                      ],
+                                          Container(
+                                            width: 100.0,
+                                            height: 100.0,
+                                            decoration: BoxDecoration(
+                                              color: Color(0x001D2428),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -510,66 +532,70 @@ class _TrainingDetailWidgetState extends State<TrainingDetailWidget> {
                     ),
                   ),
                   alignment: AlignmentDirectional(0.00, 1.00),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Align(
-                        alignment: AlignmentDirectional(-1.03, 0.99),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              16.0, 0.0, 0.0, 16.0),
-                          child: FlutterFlowIconButton(
-                            borderColor: Color(0x00B8D323),
-                            borderRadius: 25.0,
-                            borderWidth: 0.0,
-                            buttonSize: 54.0,
-                            fillColor: FlutterFlowTheme.of(context).alternate,
-                            icon: Icon(
-                              Icons.arrow_back_rounded,
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              size: 24.0,
-                            ),
-                            onPressed: () async {
-                              context.safePop();
-                            },
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            0.0, 0.0, 16.0, 16.0),
-                        child: FFButtonWidget(
-                          onPressed: () {
-                            print('Button pressed ...');
-                          },
-                          text: 'Start Workout',
-                          options: FFButtonOptions(
-                            height: 50.0,
+                  child: Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Align(
+                          alignment: AlignmentDirectional(-1.03, 0.99),
+                          child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                24.0, 13.0, 24.0, 13.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context).primary,
-                            textStyle: FlutterFlowTheme.of(context)
-                                .titleSmall
-                                .override(
-                                  fontFamily: 'Figtree',
-                                  color: FlutterFlowTheme.of(context)
-                                      .primaryBackground,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                            elevation: 3.0,
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
-                              width: 1.0,
+                                16.0, 0.0, 0.0, 16.0),
+                            child: FlutterFlowIconButton(
+                              borderColor: Color(0x00B8D323),
+                              borderRadius: 25.0,
+                              borderWidth: 0.0,
+                              buttonSize: 54.0,
+                              fillColor: FlutterFlowTheme.of(context).alternate,
+                              icon: Icon(
+                                Icons.arrow_back_rounded,
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                size: 24.0,
+                              ),
+                              onPressed: () async {
+                                context.safePop();
+                              },
                             ),
-                            borderRadius: BorderRadius.circular(48.0),
                           ),
                         ),
-                      ),
-                    ],
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 16.0, 16.0),
+                          child: FFButtonWidget(
+                            onPressed: () {
+                              print('Button pressed ...');
+                            },
+                            text: 'Start Workout',
+                            options: FFButtonOptions(
+                              height: 50.0,
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  24.0, 13.0, 24.0, 13.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: FlutterFlowTheme.of(context).primary,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .override(
+                                    fontFamily: 'Figtree',
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                              elevation: 3.0,
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(48.0),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

@@ -1,11 +1,8 @@
-import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'onboarding_gender_model.dart';
@@ -18,117 +15,15 @@ class OnboardingGenderWidget extends StatefulWidget {
   _OnboardingGenderWidgetState createState() => _OnboardingGenderWidgetState();
 }
 
-class _OnboardingGenderWidgetState extends State<OnboardingGenderWidget>
-    with TickerProviderStateMixin {
+class _OnboardingGenderWidgetState extends State<OnboardingGenderWidget> {
   late OnboardingGenderModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
-  final animationsMap = {
-    'textOnPageLoadAnimation1': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 1.ms),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 400.ms,
-          begin: Offset(0.0, -10.0),
-          end: Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-    'textOnPageLoadAnimation2': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 400.ms,
-          begin: Offset(0.0, -10.0),
-          end: Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-    'containerOnPageLoadAnimation1': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      applyInitialState: true,
-      effects: [
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 400.ms,
-          begin: Offset(0.0, -20.0),
-          end: Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-    'containerOnActionTriggerAnimation1': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      applyInitialState: true,
-      effects: [
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 400.ms,
-          begin: Offset(1.0, 1.0),
-          end: Offset(0.95, 0.95),
-        ),
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 400.ms,
-          begin: Offset(1.0, 1.0),
-          end: Offset(1.0, 1.0),
-        ),
-      ],
-    ),
-    'containerOnPageLoadAnimation2': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      applyInitialState: true,
-      effects: [
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 400.ms,
-          begin: Offset(0.0, -20.0),
-          end: Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-    'containerOnActionTriggerAnimation2': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      applyInitialState: true,
-      effects: [
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 400.ms,
-          begin: Offset(1.0, 1.0),
-          end: Offset(0.95, 0.95),
-        ),
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 400.ms,
-          begin: Offset(1.0, 1.0),
-          end: Offset(1.0, 1.0),
-        ),
-      ],
-    ),
-  };
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => OnboardingGenderModel());
-
-    setupAnimations(
-      animationsMap.values.where((anim) =>
-          anim.trigger == AnimationTrigger.onActionTrigger ||
-          !anim.applyInitialState),
-      this,
-    );
   }
 
   @override
@@ -161,7 +56,7 @@ class _OnboardingGenderWidgetState extends State<OnboardingGenderWidget>
         body: SafeArea(
           top: true,
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 16.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -179,8 +74,7 @@ class _OnboardingGenderWidgetState extends State<OnboardingGenderWidget>
                             fontFamily: 'Figtree',
                             fontWeight: FontWeight.bold,
                           ),
-                    ).animateOnPageLoad(
-                        animationsMap['textOnPageLoadAnimation1']!),
+                    ),
                   ),
                 ),
                 Align(
@@ -196,8 +90,7 @@ class _OnboardingGenderWidgetState extends State<OnboardingGenderWidget>
                             fontSize: 12.0,
                             fontWeight: FontWeight.w500,
                           ),
-                    ).animateOnPageLoad(
-                        animationsMap['textOnPageLoadAnimation2']!),
+                    ),
                   ),
                 ),
                 Expanded(
@@ -262,13 +155,7 @@ class _OnboardingGenderWidgetState extends State<OnboardingGenderWidget>
                                 ],
                               ),
                             ),
-                          )
-                              .animateOnPageLoad(animationsMap[
-                                  'containerOnPageLoadAnimation1']!)
-                              .animateOnActionTrigger(
-                                animationsMap[
-                                    'containerOnActionTriggerAnimation1']!,
-                              ),
+                          ),
                         ),
                         InkWell(
                           splashColor: Colors.transparent,
@@ -317,13 +204,7 @@ class _OnboardingGenderWidgetState extends State<OnboardingGenderWidget>
                               ],
                             ),
                           ),
-                        )
-                            .animateOnPageLoad(
-                                animationsMap['containerOnPageLoadAnimation2']!)
-                            .animateOnActionTrigger(
-                              animationsMap[
-                                  'containerOnActionTriggerAnimation2']!,
-                            ),
+                        ),
                       ],
                     ),
                   ),

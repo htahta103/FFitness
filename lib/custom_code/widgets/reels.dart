@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-import 'index.dart'; // Imports other custom widgets
 import 'package:like_button/like_button.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:video_player/video_player.dart';
@@ -59,7 +58,8 @@ class _VideoReelPageState extends State<VideoReelPage> {
   @override
   void initState() {
     super.initState();
-    _pageController = PreloadPageController(initialPage: widget.index);
+    _pageController =
+        PreloadPageController(initialPage: widget.index, keepPage: true);
     _currentPageController = BehaviorSubject<int>();
     _currentPageController.sink.add(0);
   }
@@ -78,7 +78,7 @@ class _VideoReelPageState extends State<VideoReelPage> {
         scrollDirection: Axis.vertical,
         controller: _pageController,
         itemCount: widget.reels.length,
-        preloadPagesCount: 5,
+        preloadPagesCount: 10,
         onPageChanged: (index) {
           currentPage = index;
           _currentPageController.sink.add(index);
@@ -122,40 +122,44 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget>
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
-    initializeController();
-    heartController = BehaviorSubject();
+    heartController = BehaviorSubject<bool>();
     cdSpinController = AnimationController(
       duration: const Duration(seconds: 10),
       vsync: this,
     )..repeat(reverse: false);
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      initializeController();
+    });
   }
 
   bool _videoInitialized = false;
 
   initializeController() async {
+    print('render ne ${widget.index}');
     var fileInfo = await kCacheManager.getFileFromCache(widget.reelUrl);
     if (fileInfo == null) {
       await kCacheManager.downloadFile(widget.reelUrl);
       fileInfo = await kCacheManager.getFileFromCache(widget.reelUrl);
     }
-    if (mounted) {
-      _controller?.play();
-      _controller?.pause();
-      _controller = VideoPlayerController.file(fileInfo!.file)
-        ..initialize().then((value) {
-          _controller!.setLooping(true);
+    // if (mounted) {
 
-          widget.pageIndex.listen((currentIndex) {
-            if (widget.index == currentIndex) {
-              setState(() {
-                _videoInitialized = true;
-              });
-              _controller?.play();
-              cdSpinController.repeat();
-            }
-          });
+    _controller = VideoPlayerController.file(fileInfo!.file,
+        videoPlayerOptions: VideoPlayerOptions(allowBackgroundPlayback: true))
+      ..initialize().then((value) {
+        _videoInitialized = true;
+        setState(() {});
+        widget.pageIndex.listen((currentIndex) {
+          if (widget.index == currentIndex) {
+            _isPlaying = true;
+            setState(() {});
+            _controller?.play();
+            cdSpinController.repeat();
+          } else {
+            _controller!.seekTo(Duration.zero);
+          }
         });
-    }
+      });
+    // }
   }
 
   bool _isPlaying = true;
@@ -163,17 +167,17 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget>
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     super.didChangeAppLifecycleState(state);
-    // if (state == AppLifecycleState.resumed) {
-    //   // App is in the foreground
-    //   _controller?.play();
-    // } else if (state == AppLifecycleState.inactive) {
-    //   // App is partially obscured
-    //   _controller?.pause();
-    // } else if (state == AppLifecycleState.paused) {
-    //   // App is in the background
-    //   _controller?.pause();
-    // } else
-    if (state == AppLifecycleState.detached) {
+    print('state ne => ' + state.toString());
+    if (state == AppLifecycleState.resumed) {
+      // App is in the foreground
+      _controller?.play();
+    } else if (state == AppLifecycleState.inactive) {
+      // App is partially obscured
+      _controller?.pause();
+    } else if (state == AppLifecycleState.paused) {
+      // App is in the background
+      _controller?.pause();
+    } else if (state == AppLifecycleState.detached) {
       _controller?.dispose();
     }
     // }
@@ -229,19 +233,12 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget>
                 !_videoInitialized && _controller == null
                     // when the video is not initialized you can set a thumbnail.
                     // to make it simple, I use CircularProgressIndicator
-                    ? const Center(
+                    ? Center(
                         child: CircularProgressIndicator(
-                          color: Colors.amber,
+                          color: FlutterFlowTheme.of(context).primary,
                         ),
                       )
                     : VideoPlayer(_controller!),
-                !_videoInitialized
-                    ? const Center(
-                        child: CircularProgressIndicator(
-                          color: Colors.amber,
-                        ),
-                      )
-                    : const SizedBox(),
                 if (!_isPlaying)
                   const Center(
                     child: Icon(
@@ -255,8 +252,8 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget>
                     : VideoProgressIndicator(
                         _controller!,
                         allowScrubbing: true,
-                        colors: const VideoProgressColors(
-                          playedColor: Colors.amber,
+                        colors: VideoProgressColors(
+                          playedColor: FlutterFlowTheme.of(context).primary,
                           bufferedColor: Colors.grey,
                           backgroundColor: Colors.white,
                         ),
@@ -296,11 +293,20 @@ class ReelService {
   // Here, I use some stock videos as an example.
 // But you need to make this list empty when you will call api for your reels
   final _reels = <String>[
-    'https://assets.mixkit.co/videos/preview/mixkit-aerial-panorama-of-a-landscape-with-mountains-and-a-lake-4249-large.mp4/',
-    'https://assets.mixkit.co/videos/preview/mixkit-curvy-road-on-a-tree-covered-hill-41537-large.mp4',
-    'https://assets.mixkit.co/videos/preview/mixkit-frying-diced-bacon-in-a-skillet-43063-large.mp4',
-    'https://assets.mixkit.co/videos/preview/mixkit-fresh-apples-in-a-row-on-a-natural-background-42946-large.mp4',
-    'https://assets.mixkit.co/videos/preview/mixkit-rain-falling-on-the-water-of-a-lake-seen-up-18312-large.mp4',
+    'https://www.dropbox.com/scl/fi/uqy9r3p1xovbyu70ekvm6/Snaptik.app_7240228852037995802.mp4?rlkey=jl2padl64qw6h1w36xelgpj6a&raw=1',
+    'https://www.dropbox.com/scl/fi/0tjqbkjgyj00ql37y365f/Snaptik.app_7301969920437406977.mp4?rlkey=rlkjksm3lhl1ekkz2qqonywgg&raw=1',
+    'https://assets.mixkit.co/videos/preview/mixkit-man-doing-pull-ups-wearing-face-mask-40157-large.mp4',
+    'https://www.dropbox.com/scl/fi/wxqldgdpmr6i3rvedo4ji/SnapTik_7177630540961434892.mp4?rlkey=4htlu8s1nlhit0g40mrcxj3pg&raw=1',
+    'https://www.dropbox.com/scl/fi/91yh0iiwv7cj0i9x3ebsa/SnapTik_7258434458456558889.mp4?rlkey=dkvlg608jtmkmu98hmqeimqdu&raw=1',
+    'https://www.dropbox.com/scl/fi/3j8r2zss50uv402fkh7vi/SnapTik_7291173229052316943.mp4?rlkey=ue6fx8oanpinkz2cwv4acjqj0&raw=1',
+    'https://www.dropbox.com/scl/fi/x9w7c0jfje9ulbpqp4nnj/SnapTik_7294887134303882534.mp4?rlkey=t8ls87hu6f4ipc5a1pew9m1nx&raw=1',
+    'https://www.dropbox.com/scl/fi/zn06bxkbzbo1crtr8j553/SnapTik_7300032482160692495.mp4?rlkey=52h524cttyw9ncst3s6wgla86&raw=1',
+    'https://www.dropbox.com/scl/fi/h63rh1ke4gcgb81a3nf2o/Snaptik.app_7207018258753457434.mp4?rlkey=rm2q3dmh81v9szfn2ix2va98g&raw=1',
+
+    // 'https://assets.mixkit.co/videos/preview/mixkit-curvy-road-on-a-tree-covered-hill-41537-large.mp4',
+    // 'https://assets.mixkit.co/videos/preview/mixkit-frying-diced-bacon-in-a-skillet-43063-large.mp4',
+    // 'https://assets.mixkit.co/videos/preview/mixkit-fresh-apples-in-a-row-on-a-natural-background-42946-large.mp4',
+    // 'https://assets.mixkit.co/videos/preview/mixkit-rain-falling-on-the-water-of-a-lake-seen-up-18312-large.mp4',
   ];
 
   Future getVideosFromApI() async {
@@ -350,19 +356,21 @@ class _VideoContentWidgetState extends State<VideoContentWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        // Positioned.fill(
-        //   child: ContentInfo(
-        //     uiModel: widget.data,
-        //   ),
-        // ),
-        Positioned.fill(
-            right: 0,
-            bottom: 0,
-            left: MediaQuery.of(context).size.width - 60,
-            child: actionsSection()),
-      ],
+    return SafeArea(
+      child: Stack(
+        children: [
+          // Positioned.fill(
+          //   child: ContentInfo(
+          //     uiModel: widget.data,
+          //   ),
+          // ),
+          Positioned.fill(
+              right: 0,
+              bottom: 0,
+              left: MediaQuery.of(context).size.width - 60,
+              child: actionsSection()),
+        ],
+      ),
     );
   }
 
@@ -384,6 +392,7 @@ class _VideoContentWidgetState extends State<VideoContentWidget> {
                 likeCount: 100,
                 onTap: (onTap) async {
                   widget.likeController.sink.add(!onTap);
+                  return !onTap;
                 },
                 likeBuilder: (isLiked) {
                   return Icon(
@@ -632,7 +641,7 @@ class CommentsSection extends StatelessWidget {
                     IconButton(
                       icon: const Icon(Icons.close),
                       onPressed: () async {
-                        context.safePop();
+                        // context.safePop();
                       },
                     ),
                   ],
@@ -967,5 +976,32 @@ class _MCardState extends State<MCircleButton>
             : const SizedBox.shrink()
       ],
     );
+  }
+}
+
+extension VideoExtension on VideoPlayerController? {
+  Future setPlay() async {
+    if (this?.value == null) return;
+    if (!this!.value.isPlaying) await this!.play();
+  }
+
+  Future setStop() async {
+    if (this?.value == null) return;
+    if (this!.value.isPlaying) await this!.pause();
+  }
+
+  Future reset() async {
+    if (this?.value == null) return;
+
+    if (this!.value.isPlaying) await this!.pause();
+    await this!.seekTo(Duration.zero);
+  }
+
+  Future onTapVideo() async {
+    if (!this!.value.isPlaying) {
+      await this!.play();
+    } else {
+      await this!.pause();
+    }
   }
 }

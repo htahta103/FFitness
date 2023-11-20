@@ -16,6 +16,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'flutter_flow/nav/nav.dart';
 import 'index.dart';
+import '/custom_code/actions/index.dart' as actions;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,6 +24,7 @@ void main() async {
   await initFirebase();
 
   await FlutterFlowTheme.initialize();
+  await actions.requestPermission();
 
   final appState = FFAppState(); // Initialize FFAppState
   await appState.initializePersistedState();

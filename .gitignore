@@ -2,3 +2,4 @@ pubspec.lock
 build/
 .dart_tool/
 android/mykey.jks
+android/upload-keystore.jks

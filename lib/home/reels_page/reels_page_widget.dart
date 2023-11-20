@@ -56,7 +56,7 @@ class _ReelsPageWidgetState extends State<ReelsPageWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: SafeArea(
-          top: true,
+          top: false,
           child: Column(
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.stretch,

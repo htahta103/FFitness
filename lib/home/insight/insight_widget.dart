@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:f_fitness/custom_code/actions/get_health_data.dart';
 
 import '/flutter_flow/flutter_flow_calendar.dart';
@@ -22,7 +24,8 @@ class InsightWidget extends StatefulWidget {
   _InsightWidgetState createState() => _InsightWidgetState();
 }
 
-class _InsightWidgetState extends State<InsightWidget> {
+class _InsightWidgetState extends State<InsightWidget>
+    with WidgetsBindingObserver {
   late InsightModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -31,7 +34,7 @@ class _InsightWidgetState extends State<InsightWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => InsightModel());
-
+    WidgetsBinding.instance.addObserver(this);
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await actions.getHealthData(_model.date ?? DateTime.now());
@@ -41,9 +44,28 @@ class _InsightWidgetState extends State<InsightWidget> {
   @override
   void dispose() {
     _model.dispose();
-
+    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
+
+    @override
+  Future<void> didChangeAppLifecycleState(AppLifecycleState state) async {
+    if (state == AppLifecycleState.inactive) {
+    } else if (state == AppLifecycleState.resumed) {
+      await actions.getHealthData(_model.date ?? DateTime.now());
+
+    }
+  }
+
+  // @override
+  // void didChangeAppLifecycleState(AppLifecycleState state) async {
+  //   print('state ne => ' + state.toString());
+  //   if (state == AppLifecycleState.resumed) {
+  //     // App is in the foreground
+  //     await actions.getHealthData(_model.date ?? DateTime.now());
+  //   }
+  //   // }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -116,7 +138,7 @@ class _InsightWidgetState extends State<InsightWidget> {
                           child: CircularPercentIndicator(
                             percent: valueOrDefault<double>(
                               (int cal) {
-                                return (cal / 2000 > 1) ? 1 : (cal / 2000);
+                                return (cal / 2000 > 1) ? 1.0 : (cal / 2000);
                               }(FFAppState().calories) as double?,
                               0.0,
                             ),
@@ -228,7 +250,7 @@ class _InsightWidgetState extends State<InsightWidget> {
                                   percent: valueOrDefault<double>(
                                     (int steps) {
                                       return (steps / 10000) > 1
-                                          ? 1
+                                          ? 1.0
                                           : (steps / 10000);
                                     }(FFAppState().step) as double?,
                                     0.0,
@@ -322,7 +344,7 @@ class _InsightWidgetState extends State<InsightWidget> {
                                   percent: valueOrDefault<double>(
                                     (int time) {
                                       return (time / 600) > 1
-                                          ? 1
+                                          ? 1.0
                                           : (time / 600);
                                     }(FFAppState().sleep) as double?,
                                     0.0,
@@ -422,10 +444,16 @@ class _InsightWidgetState extends State<InsightWidget> {
                               Align(
                                 alignment: AlignmentDirectional(0.00, 0.00),
                                 child: CircularPercentIndicator(
-                                  percent: valueOrDefault<double>(
-                                    FFAppState().heartRate / 150,
+                                  percent:
+                                  valueOrDefault<double>(
+                                    (int time) {
+                                      return (time / 150) > 1
+                                          ? 1.0
+                                          : (time / 150);
+                                    }( FFAppState().heartRate) as double?,
                                     0.0,
-                                  ),
+                                  )
+                                  ,
                                   radius: 55.0,
                                   lineWidth: 5.0,
                                   animation: true,

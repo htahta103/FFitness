@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-import 'index.dart'; // Imports other custom widgets
 import 'package:like_button/like_button.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:video_player/video_player.dart';
@@ -178,8 +177,7 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget>
     } else if (state == AppLifecycleState.paused) {
       // App is in the background
       _controller?.pause();
-    } else
-    if (state == AppLifecycleState.detached) {
+    } else if (state == AppLifecycleState.detached) {
       _controller?.dispose();
     }
     // }
@@ -395,6 +393,7 @@ class _VideoContentWidgetState extends State<VideoContentWidget> {
                 likeCount: 100,
                 onTap: (onTap) async {
                   widget.likeController.sink.add(!onTap);
+                  return !onTap;
                 },
                 likeBuilder: (isLiked) {
                   return Icon(
@@ -643,7 +642,7 @@ class CommentsSection extends StatelessWidget {
                     IconButton(
                       icon: const Icon(Icons.close),
                       onPressed: () async {
-                        context.safePop();
+                        // context.safePop();
                       },
                     ),
                   ],

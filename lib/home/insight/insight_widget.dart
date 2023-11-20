@@ -115,7 +115,9 @@ class _InsightWidgetState extends State<InsightWidget> {
                           alignment: AlignmentDirectional(0.00, 0.00),
                           child: CircularPercentIndicator(
                             percent: valueOrDefault<double>(
-                              FFAppState().calories / 2000,
+                              (int cal) {
+                                return (cal / 2000 > 1) ? 1 : (cal / 2000);
+                              }(FFAppState().calories) as double?,
                               0.0,
                             ),
                             radius: 84.0,
@@ -224,7 +226,11 @@ class _InsightWidgetState extends State<InsightWidget> {
                                 alignment: AlignmentDirectional(0.00, 0.00),
                                 child: CircularPercentIndicator(
                                   percent: valueOrDefault<double>(
-                                    FFAppState().step / 10000,
+                                    (int steps) {
+                                      return (steps / 10000) > 1
+                                          ? 1
+                                          : (steps / 10000);
+                                    }(FFAppState().step) as double?,
                                     0.0,
                                   ),
                                   radius: 55.0,
@@ -314,7 +320,11 @@ class _InsightWidgetState extends State<InsightWidget> {
                                 alignment: AlignmentDirectional(0.00, 0.00),
                                 child: CircularPercentIndicator(
                                   percent: valueOrDefault<double>(
-                                    FFAppState().sleep / 600,
+                                    (int time) {
+                                      return (time / 600) > 1
+                                          ? 1
+                                          : (time / 600);
+                                    }(FFAppState().sleep) as double?,
                                     0.0,
                                   ),
                                   radius: 55.0,
@@ -348,7 +358,7 @@ class _InsightWidgetState extends State<InsightWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 8.0),
                                           child: Text(
-                                            'Time',
+                                            'Sleep',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
